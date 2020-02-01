@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKartWeb", "MarioKartWeb\MarioKartWeb.csproj", "{29F6A0DB-F38B-4FA3-9EC9-E7291A3FC4F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKartWeb.Tests", "MarioKartWeb.Tests\MarioKartWeb.Tests.csproj", "{456A1A4B-3AE5-4B68-8997-0B9AA8775277}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29F6A0DB-F38B-4FA3-9EC9-E7291A3FC4F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29F6A0DB-F38B-4FA3-9EC9-E7291A3FC4F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29F6A0DB-F38B-4FA3-9EC9-E7291A3FC4F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29F6A0DB-F38B-4FA3-9EC9-E7291A3FC4F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456A1A4B-3AE5-4B68-8997-0B9AA8775277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456A1A4B-3AE5-4B68-8997-0B9AA8775277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456A1A4B-3AE5-4B68-8997-0B9AA8775277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456A1A4B-3AE5-4B68-8997-0B9AA8775277}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6EE06458-BEBC-433B-98C7-F64C3A0C5184}
+	EndGlobalSection
+EndGlobal
