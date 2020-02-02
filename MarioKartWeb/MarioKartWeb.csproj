@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RacesController.cs" />
     <Compile Include="Data\MarioKartWebContext.cs" />
@@ -136,7 +137,12 @@
     <Compile Include="Migrations\202002020925306_InitialCreate.Designer.cs">
       <DependentUpon>202002020925306_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002021006031_addedDriversTable.cs" />
+    <Compile Include="Migrations\202002021006031_addedDriversTable.Designer.cs">
+      <DependentUpon>202002021006031_addedDriversTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Drivers.cs" />
     <Compile Include="Models\Race.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,6 +187,11 @@
     <Content Include="Views\Races\Details.cshtml" />
     <Content Include="Views\Races\Edit.cshtml" />
     <Content Include="Views\Races\Index.cshtml" />
+    <Content Include="Views\Drivers\Create.cshtml" />
+    <Content Include="Views\Drivers\Delete.cshtml" />
+    <Content Include="Views\Drivers\Details.cshtml" />
+    <Content Include="Views\Drivers\Edit.cshtml" />
+    <Content Include="Views\Drivers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -201,6 +212,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002020925306_InitialCreate.resx">
       <DependentUpon>202002020925306_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002021006031_addedDriversTable.resx">
+      <DependentUpon>202002021006031_addedDriversTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
