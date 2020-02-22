@@ -141,8 +141,17 @@
     <Compile Include="Migrations\202002021006031_addedDriversTable.Designer.cs">
       <DependentUpon>202002021006031_addedDriversTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002221559060_addedGrandPrixTable.cs" />
+    <Compile Include="Migrations\202002221559060_addedGrandPrixTable.Designer.cs">
+      <DependentUpon>202002221559060_addedGrandPrixTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002221603114_addedGrandPrixTableToContext.cs" />
+    <Compile Include="Migrations\202002221603114_addedGrandPrixTableToContext.Designer.cs">
+      <DependentUpon>202002221603114_addedGrandPrixTableToContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Drivers.cs" />
+    <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\GrandPrix.cs" />
     <Compile Include="Models\Race.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -215,6 +224,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002021006031_addedDriversTable.resx">
       <DependentUpon>202002021006031_addedDriversTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002221559060_addedGrandPrixTable.resx">
+      <DependentUpon>202002221559060_addedGrandPrixTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002221603114_addedGrandPrixTableToContext.resx">
+      <DependentUpon>202002221603114_addedGrandPrixTableToContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

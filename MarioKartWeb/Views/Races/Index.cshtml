@@ -15,43 +15,110 @@
             @Html.DisplayNameFor(model => model.RaceDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Driver)
+            @Html.DisplayNameFor(model => model.TournamentName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GrandPrix)
+            @Html.DisplayNameFor(model => model.GrandPrixName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Points)
+            @Html.DisplayNameFor(model => model.FirstPlaceDriver)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Place)
+            @Html.DisplayNameFor(model => model.FirstPlacePosition)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstPlacePoints)
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.SecondPlaceDriver)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondPlacePosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondPlacePoints)
+        </th>*@
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.ThirdPlaceDriver)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThirdPlacePosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThirdPlacePoints)
+        </th>*@
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.FourthPlaceDriver)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FourthPlacePosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FourthPlacePoints)
+        </th>
+        <th></th>*@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RaceDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Driver)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GrandPrix)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Points)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Place)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.RaceDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TournamentName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GrandPrixName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstPlaceDriver)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstPlacePosition)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstPlacePoints)
+    </td>
+
+    @*<td>
+        @Html.DisplayFor(modelItem => item.SecondPlaceDriver)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecondPlacePosition)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecondPlacePoints)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.ThirdPlaceDriver)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ThirdPlacePosition)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ThirdPlacePoints)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.FourthPlaceDriver)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FourthPlacePosition)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FourthPlacePoints)
+    </td>*@
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
 }
 
 </table>

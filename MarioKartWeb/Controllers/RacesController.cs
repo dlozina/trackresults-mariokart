@@ -14,11 +14,14 @@ namespace MarioKartWeb.Controllers
     public class RacesController : Controller
     {
         private MarioKartWebContext db = new MarioKartWebContext();
+        private string _bindingDb = "ID,RaceDate,TournamentName,GrandPrixName,FirstPlaceDriver,FirstPlacePosition,FirstPlacePoints,SecondPlaceDriver,SecondPlacePosition,SecondPlacePoints," +
+                                    "ThirdPlaceDriver,ThirdPlacePosition,ThirdPlacePoints,FourthPlaceDriver,FourthPlacePosition,FourthPlacePoints";
 
         // GET: Races
         public ActionResult Index()
         {
-            return View(db.Races.ToList());
+            var races = db.Races;
+            return View(races);
         }
 
         // GET: Races/Details/5
@@ -47,7 +50,7 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,RaceDate,Driver,GrandPrix,Points,Place")] Race race)
+        public ActionResult Create(Race race)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +82,7 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,RaceDate,Driver,GrandPrix,Points,Place")] Race race)
+        public ActionResult Edit(Race race)
         {
             if (ModelState.IsValid)
             {

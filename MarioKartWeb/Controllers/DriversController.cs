@@ -28,7 +28,7 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Drivers drivers = db.Drivers.Find(id);
+            Driver drivers = db.Drivers.Find(id);
             if (drivers == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Description,FavoriteTrack,FavoriteCar")] Drivers drivers)
+        public ActionResult Create([Bind(Include = "ID,Name,Description,FavoriteTrack,FavoriteCar")] Driver drivers)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Drivers drivers = db.Drivers.Find(id);
+            Driver drivers = db.Drivers.Find(id);
             if (drivers == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Description,FavoriteTrack,FavoriteCar")] Drivers drivers)
+        public ActionResult Edit([Bind(Include = "ID,Name,Description,FavoriteTrack,FavoriteCar")] Driver drivers)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Drivers drivers = db.Drivers.Find(id);
+            Driver drivers = db.Drivers.Find(id);
             if (drivers == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace MarioKartWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Drivers drivers = db.Drivers.Find(id);
+            Driver drivers = db.Drivers.Find(id);
             db.Drivers.Remove(drivers);
             db.SaveChanges();
             return RedirectToAction("Index");

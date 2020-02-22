@@ -5,12 +5,9 @@ using System.Web;
 
 namespace MarioKartWeb.Models
 {
-    public class Drivers
+    public class GrandPrix
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string FavoriteTrack { get; set; }
-        public string FavoriteCar { get; set; }
     }
 }

@@ -21,6 +21,8 @@ namespace MarioKartWeb.Data
 
         public System.Data.Entity.DbSet<MarioKartWeb.Models.Race> Races { get; set; }
 
-        public System.Data.Entity.DbSet<MarioKartWeb.Models.Drivers> Drivers { get; set; }
+        public System.Data.Entity.DbSet<MarioKartWeb.Models.Driver> Drivers { get; set; }
+        public System.Data.Entity.DbSet<MarioKartWeb.Models.GrandPrix> GrandPrixes { get; set; }
+
     }
 }
