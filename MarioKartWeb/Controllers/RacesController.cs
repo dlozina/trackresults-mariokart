@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -47,6 +48,10 @@ namespace MarioKartWeb.Controllers
             var listOfTournaments = db.Tournaments.OrderBy(x => x.ID).ToList();
             var listOfGrandPrixs = db.GrandPrixes.OrderBy(x => x.ID).ToList();
             var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
+
+            string dateTimeNow = DateTime.Now.ToString("dd.MM.yyyy");
+            DateTime date = DateTime.ParseExact(dateTimeNow, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+            vm.RaceDate = date;
 
             foreach (var tournament in listOfTournaments)
             {
@@ -118,7 +123,11 @@ namespace MarioKartWeb.Controllers
             var listOfGrandPrixs = db.GrandPrixes.OrderBy(x => x.ID).ToList();
             var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
 
-            
+
+            string dateTimeNow = DateTime.Now.Date.ToString("dd/mm/yyyy");
+            DateTime date = DateTime.ParseExact(dateTimeNow, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+            vm.RaceDate = date;
+
             foreach (var tournament in listOfTournaments)
             {
                 vm.Tournaments.Add(new SelectListItem()

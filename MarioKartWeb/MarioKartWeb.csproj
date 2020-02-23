@@ -151,7 +151,12 @@
     <Compile Include="Migrations\202002222321126_changedDateTimeFieldTournament.Designer.cs">
       <DependentUpon>202002222321126_changedDateTimeFieldTournament.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002231918027_changedDateTimeFieldRace.cs" />
+    <Compile Include="Migrations\202002231918027_changedDateTimeFieldRace.Designer.cs">
+      <DependentUpon>202002231918027_changedDateTimeFieldRace.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\DatabaseSeedConfiguration.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\GrandPrix.cs" />
     <Compile Include="Models\Race.cs" />
@@ -281,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002222321126_changedDateTimeFieldTournament.resx">
       <DependentUpon>202002222321126_changedDateTimeFieldTournament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002231918027_changedDateTimeFieldRace.resx">
+      <DependentUpon>202002231918027_changedDateTimeFieldRace.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
