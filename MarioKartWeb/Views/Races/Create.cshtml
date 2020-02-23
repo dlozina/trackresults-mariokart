@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TournamentName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TournamentName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.TournamentName, Model.Tournaments, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TournamentName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GrandPrixName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.GrandPrixName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.GrandPrixName, Model.GrandPrixs, new { @class = "form-control filter-drop-down" } )
                 @Html.ValidationMessageFor(model => model.GrandPrixName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Driver, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Driver, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Driver, Model.Drivers, new { @class = "form-control filter-drop-down" } )
                 @Html.ValidationMessageFor(model => model.Driver, "", new { @class = "text-danger" })
             </div>
         </div>

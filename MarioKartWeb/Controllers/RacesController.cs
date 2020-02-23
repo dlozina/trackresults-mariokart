@@ -42,7 +42,43 @@ namespace MarioKartWeb.Controllers
         // GET: Races/Create
         public ActionResult Create()
         {
-            return View();
+            RaceViewModel vm = new RaceViewModel();
+            
+            var listOfTournaments = db.Tournaments.OrderBy(x => x.ID).ToList();
+            var listOfGrandPrixs = db.GrandPrixes.OrderBy(x => x.ID).ToList();
+            var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
+
+            foreach (var tournament in listOfTournaments)
+            {
+                vm.Tournaments.Add(new SelectListItem()
+                {
+                    Text = tournament.TournamentName,
+                    Value = tournament.TournamentName
+                });
+
+            }
+
+            foreach (var grandPrix in listOfGrandPrixs)
+            {
+                vm.GrandPrixs.Add(new SelectListItem()
+                {
+                    Text = grandPrix.Name,
+                    Value = grandPrix.Name
+                });
+
+            }
+
+            foreach (var driver in listOfDrivers)
+            {
+                vm.Drivers.Add(new SelectListItem()
+                {
+                    Text = driver.Name,
+                    Value = driver.Name
+                });
+
+            }
+
+            return View(vm);
         }
 
         // POST: Races/Create
@@ -75,7 +111,48 @@ namespace MarioKartWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(race);
+
+            RaceViewModel vm = new RaceViewModel();
+
+            var listOfTournaments = db.Tournaments.OrderBy(x => x.ID).ToList();
+            var listOfGrandPrixs = db.GrandPrixes.OrderBy(x => x.ID).ToList();
+            var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
+
+            
+            foreach (var tournament in listOfTournaments)
+            {
+                vm.Tournaments.Add(new SelectListItem()
+                {
+                    Text = tournament.TournamentName,
+                    Value = tournament.TournamentName,
+                });
+
+            }
+            vm.TournamentName = race.TournamentName;
+
+            foreach (var grandPrix in listOfGrandPrixs)
+            {
+                vm.GrandPrixs.Add(new SelectListItem()
+                {
+                    Text = grandPrix.Name,
+                    Value = grandPrix.Name
+                });
+
+            }
+            vm.GrandPrixName = race.GrandPrixName;
+
+            foreach (var driver in listOfDrivers)
+            {
+                vm.Drivers.Add(new SelectListItem()
+                {
+                    Text = driver.Name,
+                    Value = driver.Name
+                });
+
+            }
+            vm.Driver = race.Driver;
+
+            return View(vm);
         }
 
         // POST: Races/Edit/5
@@ -83,15 +160,17 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Race race)
+        public ActionResult Edit(RaceViewModel vm)
         {
+            var model = Mapper.Map<Race>(vm);
+
             if (ModelState.IsValid)
             {
-                db.Entry(race).State = EntityState.Modified;
+                db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(race);
+            return View(vm);
         }
 
         // GET: Races/Delete/5
