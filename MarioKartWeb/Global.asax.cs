@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using MarioKartWeb.App_Start;
+using MarioKartWeb.Models;
+using MarioKartWeb.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +20,8 @@ namespace MarioKartWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            // AutoMapper
+            AutoMapperConfig.Configure();
         }
     }
 }

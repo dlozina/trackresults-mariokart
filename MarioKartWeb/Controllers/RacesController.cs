@@ -6,8 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using MarioKartWeb.Data;
 using MarioKartWeb.Models;
+using MarioKartWeb.ViewModel;
 
 namespace MarioKartWeb.Controllers
 {
@@ -48,16 +50,17 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Race race)
+        public ActionResult Create(RaceViewModel vm)
         {
+            var model = Mapper.Map<Race>(vm);
+
             if (ModelState.IsValid)
             {
-                db.Races.Add(race);
+                db.Races.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(race);
+            return View(vm);
         }
 
         // GET: Races/Edit/5
