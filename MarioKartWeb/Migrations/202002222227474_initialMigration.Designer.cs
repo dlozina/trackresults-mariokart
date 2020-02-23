@@ -7,13 +7,13 @@ namespace MarioKartWeb.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addedGrandPrixTableToContext : IMigrationMetadata
+    public sealed partial class initialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedGrandPrixTableToContext));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202002221603114_addedGrandPrixTableToContext"; }
+            get { return "202002222227474_initialMigration"; }
         }
         
         string IMigrationMetadata.Source

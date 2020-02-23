@@ -21,45 +21,14 @@
             @Html.DisplayNameFor(model => model.GrandPrixName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstPlaceDriver)
+            @Html.DisplayNameFor(model => model.Driver)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstPlacePosition)
+            @Html.DisplayNameFor(model => model.Position)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstPlacePoints)
+            @Html.DisplayNameFor(model => model.Points)
         </th>
-
-        @*<th>
-            @Html.DisplayNameFor(model => model.SecondPlaceDriver)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SecondPlacePosition)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SecondPlacePoints)
-        </th>*@
-
-        @*<th>
-            @Html.DisplayNameFor(model => model.ThirdPlaceDriver)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ThirdPlacePosition)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ThirdPlacePoints)
-        </th>*@
-
-        @*<th>
-            @Html.DisplayNameFor(model => model.FourthPlaceDriver)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FourthPlacePosition)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FourthPlacePoints)
-        </th>
-        <th></th>*@
     </tr>
 
 @foreach (var item in Model) {
@@ -74,44 +43,14 @@
         @Html.DisplayFor(modelItem => item.GrandPrixName)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.FirstPlaceDriver)
+        @Html.DisplayFor(modelItem => item.Driver)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.FirstPlacePosition)
+        @Html.DisplayFor(modelItem => item.Position)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.FirstPlacePoints)
+        @Html.DisplayFor(modelItem => item.Points)
     </td>
-
-    @*<td>
-        @Html.DisplayFor(modelItem => item.SecondPlaceDriver)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SecondPlacePosition)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SecondPlacePoints)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.ThirdPlaceDriver)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ThirdPlacePosition)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ThirdPlacePoints)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.FourthPlaceDriver)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FourthPlacePosition)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FourthPlacePoints)
-    </td>*@
 
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |

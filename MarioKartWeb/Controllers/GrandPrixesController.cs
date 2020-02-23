@@ -11,108 +11,107 @@ using MarioKartWeb.Models;
 
 namespace MarioKartWeb.Controllers
 {
-    public class RacesController : Controller
+    public class GrandPrixesController : Controller
     {
         private MarioKartWebContext db = new MarioKartWebContext();
 
-        // GET: Races
+        // GET: GrandPrixes
         public ActionResult Index()
         {
-            var races = db.Races;
-            return View(races);
+            return View(db.GrandPrixes.ToList());
         }
 
-        // GET: Races/Details/5
+        // GET: GrandPrixes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Race race = db.Races.Find(id);
-            if (race == null)
+            GrandPrix grandPrix = db.GrandPrixes.Find(id);
+            if (grandPrix == null)
             {
                 return HttpNotFound();
             }
-            return View(race);
+            return View(grandPrix);
         }
 
-        // GET: Races/Create
+        // GET: GrandPrixes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Races/Create
+        // POST: GrandPrixes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Race race)
+        public ActionResult Create([Bind(Include = "ID,Name")] GrandPrix grandPrix)
         {
             if (ModelState.IsValid)
             {
-                db.Races.Add(race);
+                db.GrandPrixes.Add(grandPrix);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(race);
+            return View(grandPrix);
         }
 
-        // GET: Races/Edit/5
+        // GET: GrandPrixes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Race race = db.Races.Find(id);
-            if (race == null)
+            GrandPrix grandPrix = db.GrandPrixes.Find(id);
+            if (grandPrix == null)
             {
                 return HttpNotFound();
             }
-            return View(race);
+            return View(grandPrix);
         }
 
-        // POST: Races/Edit/5
+        // POST: GrandPrixes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Race race)
+        public ActionResult Edit([Bind(Include = "ID,Name")] GrandPrix grandPrix)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(race).State = EntityState.Modified;
+                db.Entry(grandPrix).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(race);
+            return View(grandPrix);
         }
 
-        // GET: Races/Delete/5
+        // GET: GrandPrixes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Race race = db.Races.Find(id);
-            if (race == null)
+            GrandPrix grandPrix = db.GrandPrixes.Find(id);
+            if (grandPrix == null)
             {
                 return HttpNotFound();
             }
-            return View(race);
+            return View(grandPrix);
         }
 
-        // POST: Races/Delete/5
+        // POST: GrandPrixes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Race race = db.Races.Find(id);
-            db.Races.Remove(race);
+            GrandPrix grandPrix = db.GrandPrixes.Find(id);
+            db.GrandPrixes.Remove(grandPrix);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

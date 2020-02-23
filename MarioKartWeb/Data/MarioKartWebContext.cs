@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarioKartWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -17,12 +18,11 @@ namespace MarioKartWeb.Data
     
         public MarioKartWebContext() : base("name=MarioKartWebContext")
         {
+            //Database.SetInitializer(new GrandPrixesDBInitializer());
         }
-
-        public System.Data.Entity.DbSet<MarioKartWeb.Models.Race> Races { get; set; }
-
-        public System.Data.Entity.DbSet<MarioKartWeb.Models.Driver> Drivers { get; set; }
-        public System.Data.Entity.DbSet<MarioKartWeb.Models.GrandPrix> GrandPrixes { get; set; }
-
+        public DbSet<MarioKartWeb.Models.Driver> Drivers { get; set; }
+        public DbSet<MarioKartWeb.Models.GrandPrix> GrandPrixes { get; set; }
+        public DbSet<MarioKartWeb.Models.Race> Races { get; set; }
+        public DbSet<MarioKartWeb.Models.Tournament> Tournaments { get; set; }
     }
 }

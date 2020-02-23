@@ -127,32 +127,27 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DriversController.cs" />
+    <Compile Include="Controllers\GrandPrixesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RacesController.cs" />
+    <Compile Include="Controllers\TournamentsController.cs" />
     <Compile Include="Data\MarioKartWebContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002020925306_InitialCreate.cs" />
-    <Compile Include="Migrations\202002020925306_InitialCreate.Designer.cs">
-      <DependentUpon>202002020925306_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202002222227474_initialMigration.cs" />
+    <Compile Include="Migrations\202002222227474_initialMigration.Designer.cs">
+      <DependentUpon>202002222227474_initialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002021006031_addedDriversTable.cs" />
-    <Compile Include="Migrations\202002021006031_addedDriversTable.Designer.cs">
-      <DependentUpon>202002021006031_addedDriversTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002221559060_addedGrandPrixTable.cs" />
-    <Compile Include="Migrations\202002221559060_addedGrandPrixTable.Designer.cs">
-      <DependentUpon>202002221559060_addedGrandPrixTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002221603114_addedGrandPrixTableToContext.cs" />
-    <Compile Include="Migrations\202002221603114_addedGrandPrixTableToContext.Designer.cs">
-      <DependentUpon>202002221603114_addedGrandPrixTableToContext.cs</DependentUpon>
+    <Compile Include="Migrations\202002222321126_changedDateTimeFieldTournament.cs" />
+    <Compile Include="Migrations\202002222321126_changedDateTimeFieldTournament.Designer.cs">
+      <DependentUpon>202002222321126_changedDateTimeFieldTournament.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\GrandPrix.cs" />
     <Compile Include="Models\Race.cs" />
+    <Compile Include="Models\Tournament.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +155,47 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -172,6 +208,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -201,6 +239,16 @@
     <Content Include="Views\Drivers\Details.cshtml" />
     <Content Include="Views\Drivers\Edit.cshtml" />
     <Content Include="Views\Drivers\Index.cshtml" />
+    <Content Include="Views\Tournaments\Create.cshtml" />
+    <Content Include="Views\Tournaments\Delete.cshtml" />
+    <Content Include="Views\Tournaments\Details.cshtml" />
+    <Content Include="Views\Tournaments\Edit.cshtml" />
+    <Content Include="Views\Tournaments\Index.cshtml" />
+    <Content Include="Views\GrandPrixes\Create.cshtml" />
+    <Content Include="Views\GrandPrixes\Delete.cshtml" />
+    <Content Include="Views\GrandPrixes\Details.cshtml" />
+    <Content Include="Views\GrandPrixes\Edit.cshtml" />
+    <Content Include="Views\GrandPrixes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -219,17 +267,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002020925306_InitialCreate.resx">
-      <DependentUpon>202002020925306_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002222227474_initialMigration.resx">
+      <DependentUpon>202002222227474_initialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002021006031_addedDriversTable.resx">
-      <DependentUpon>202002021006031_addedDriversTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002221559060_addedGrandPrixTable.resx">
-      <DependentUpon>202002221559060_addedGrandPrixTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002221603114_addedGrandPrixTableToContext.resx">
-      <DependentUpon>202002221603114_addedGrandPrixTableToContext.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002222321126_changedDateTimeFieldTournament.resx">
+      <DependentUpon>202002222321126_changedDateTimeFieldTournament.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
