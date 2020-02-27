@@ -25,12 +25,19 @@ namespace MarioKartWeb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-
+            // dataTables css styles
+            bundles.Add(new StyleBundle("~/Content/dataTablesStyles").Include(
+                      "~/Content/plugins/dataTables/datatables.min.css"));
+            // dataTables js
+            bundles.Add(new ScriptBundle("~/plugins/dataTables").Include(
+                      "~/Scripts/plugins/dataTables/datatables.min.js"));
+            // datePicker css styles
+            bundles.Add(new StyleBundle("~/Content/jquerycssui").Include(
+                      "~/Content/themes/base/jquery-ui.css"));
+            // datepicker js
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                       "~/Scripts/jquery-ui-1.12.1.js"));
 
-            bundles.Add(new StyleBundle("~/Content/jquerycssui").Include(
-                      "~/Content/themes/base/jquery-ui.css"));
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using MarioKartWeb.Helper;
 using MarioKartWeb.Models;
 using MarioKartWeb.ViewModel;
 
@@ -15,6 +16,7 @@ namespace MarioKartWeb.App_Start
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Race, RaceViewModel>().ReverseMap();
+                cfg.CreateMap<Standings, StandingsViewModel>().ReverseMap();
             });
         }
     }
