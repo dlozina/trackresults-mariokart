@@ -140,11 +140,13 @@
     <Compile Include="Controllers\RacesController.cs" />
     <Compile Include="Controllers\StandingsController.cs" />
     <Compile Include="Controllers\TournamentsController.cs" />
+    <Compile Include="Controllers\TournamentStandingsController.cs" />
     <Compile Include="Data\MarioKartWebContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Standings.cs" />
+    <Compile Include="Helper\TournamentStandings.cs" />
     <Compile Include="Migrations\202002222227474_initialMigration.cs" />
     <Compile Include="Migrations\202002222227474_initialMigration.Designer.cs">
       <DependentUpon>202002222227474_initialMigration.cs</DependentUpon>
@@ -167,6 +169,8 @@
     <Compile Include="ViewModel\RaceViewModel.cs" />
     <Compile Include="ViewModel\StandingsIndexViewModel.cs" />
     <Compile Include="ViewModel\StandingsViewModel.cs" />
+    <Compile Include="ViewModel\TournamentStandingsViewModel.cs" />
+    <Compile Include="ViewModel\TournamentStandingsIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -275,6 +279,7 @@
     <Content Include="Views\GrandPrixes\Edit.cshtml" />
     <Content Include="Views\GrandPrixes\Index.cshtml" />
     <Content Include="Views\Standings\Index.cshtml" />
+    <Content Include="Views\TournamentStandings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

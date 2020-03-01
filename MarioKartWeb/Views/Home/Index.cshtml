@@ -2,28 +2,29 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>MARIO KART TOURNAMENTS</h1>
-    <p class="lead">WE ARE FAST</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <div class="jumbotron">
+        <h1>MARIO KART TOURNAMENTS</h1>
+        <p class="lead">WE ARE FAST</p>
+        @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+        @Html.ActionLink("Learn More", "Index", "Standings", null, new { @class = "btn btn-success" })
+    </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>MK 5 is under way</h2>
+        <h2>MK 9 is under way</h2>
         <p>
-            Clash of the Titans
+            Who will win MK9: Resurection of the Forgotten ?
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Link where are you?</h2>
+        <p>Comming from position no. 1 to position no.3 is an amazing blow to this franchise. Is GOAT chalenged?</p>
+        @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Future of Roy</h2>
+        <p>Long time has passed since Roy qualified for first four seat. Will he sit at the table again? Stay tuned for MK9...</p>
+        @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
     </div>
 </div>

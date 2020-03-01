@@ -16,12 +16,26 @@ namespace MarioKartWeb.ViewModel
             Drivers = new List<SelectListItem>();
         }
         public int ID { get; set; }
+        [Required]
         [DataType(DataType.Date)]
+        [Display(Name = "Race Date")]
         public DateTime RaceDate { get; set; }
+        [Required]
+        [Display(Name = "Tournament Name")]
         public string TournamentName { get; set; }
+        [Required]
+        [Display(Name = "Grand Prix Name")]
         public string GrandPrixName { get; set; }
+        [Required]
+        [Display(Name = "Driver")]
         public string Driver { get; set; }
+        [Required]
+        [Display(Name = "Position")]
+        [Range(1, 12)]
         public int Position { get; set; }
+        [Required]
+        [Range(1, 60)]
+        [Display(Name = "Points")]
         public int Points { get; set; }
         public List<SelectListItem> Tournaments { get; set; }
         public List<SelectListItem> GrandPrixs { get; set; }

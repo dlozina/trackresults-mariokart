@@ -17,6 +17,7 @@ namespace MarioKartWeb.App_Start
             {
                 cfg.CreateMap<Race, RaceViewModel>().ReverseMap();
                 cfg.CreateMap<Standings, StandingsViewModel>().ReverseMap();
+                cfg.CreateMap<TournamentStandings, TournamentStandingsViewModel>().ReverseMap();
             });
         }
     }

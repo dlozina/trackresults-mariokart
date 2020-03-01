@@ -21,8 +21,23 @@ namespace MarioKartWeb.Controllers
         // GET: Races
         public ActionResult Index()
         {
-            var races = db.Races;
-            return View(races);
+            List<RaceViewModel> vms = new List<RaceViewModel>();
+            var races = db.Races.OrderByDescending(x => x.ID);
+
+            foreach(var race in races)
+            {
+                RaceViewModel vm = new RaceViewModel();
+                vm.RaceDate = DateTime.Parse(race.RaceDate.ToString());
+                vm.TournamentName = race.TournamentName;
+                vm.GrandPrixName = race.GrandPrixName;
+                vm.Driver = race.Driver;
+                vm.Position = race.Position;
+                vm.Points = race.Points;
+                vm.ID = race.ID;
+                vms.Add(vm);
+            }
+
+            return View(vms);
         }
 
         // GET: Races/Details/5
@@ -53,6 +68,8 @@ namespace MarioKartWeb.Controllers
             DateTime date = DateTime.ParseExact(dateTimeNow, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
             vm.RaceDate = date;
 
+            var lastRace = db.Races.OrderByDescending(x => x.ID).First();
+
             foreach (var tournament in listOfTournaments)
             {
                 vm.Tournaments.Add(new SelectListItem()
@@ -62,6 +79,7 @@ namespace MarioKartWeb.Controllers
                 });
 
             }
+            vm.TournamentName = lastRace.TournamentName;
 
             foreach (var grandPrix in listOfGrandPrixs)
             {
@@ -72,6 +90,7 @@ namespace MarioKartWeb.Controllers
                 });
 
             }
+            vm.GrandPrixName = lastRace.GrandPrixName;
 
             foreach (var driver in listOfDrivers)
             {
@@ -111,8 +130,9 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Race race = db.Races.Find(id);
-            if (race == null)
+
+            var entryId = db.Races.FirstOrDefault(x => x.ID == id);
+            if (entryId == null)
             {
                 return HttpNotFound();
             }
@@ -123,10 +143,7 @@ namespace MarioKartWeb.Controllers
             var listOfGrandPrixs = db.GrandPrixes.OrderBy(x => x.ID).ToList();
             var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
 
-
-            string dateTimeNow = DateTime.Now.Date.ToString("dd/mm/yyyy");
-            DateTime date = DateTime.ParseExact(dateTimeNow, "dd/mm/yyyy", CultureInfo.InvariantCulture);
-            vm.RaceDate = date;
+            vm.RaceDate = DateTime.Parse(entryId.RaceDate.ToString());
 
             foreach (var tournament in listOfTournaments)
             {
@@ -137,7 +154,7 @@ namespace MarioKartWeb.Controllers
                 });
 
             }
-            vm.TournamentName = race.TournamentName;
+            vm.TournamentName = entryId.TournamentName;
 
             foreach (var grandPrix in listOfGrandPrixs)
             {
@@ -148,7 +165,7 @@ namespace MarioKartWeb.Controllers
                 });
 
             }
-            vm.GrandPrixName = race.GrandPrixName;
+            vm.GrandPrixName = entryId.GrandPrixName;
 
             foreach (var driver in listOfDrivers)
             {
@@ -159,7 +176,9 @@ namespace MarioKartWeb.Controllers
                 });
 
             }
-            vm.Driver = race.Driver;
+            vm.Driver = entryId.Driver;
+            vm.Position = entryId.Position;
+            vm.Points = entryId.Points;
 
             return View(vm);
         }
