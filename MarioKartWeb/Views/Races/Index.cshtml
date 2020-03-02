@@ -94,8 +94,7 @@
     @Scripts.Render("~/plugins/dataTables")
     <script>
         $(document).ready(function() {
-            $('#DataTables_Table_0').DataTable();
+            $('#DataTables_Table_0').DataTable({"order": [[ 1, "desc" ]]} );
         } );
-
     </script>
 }
