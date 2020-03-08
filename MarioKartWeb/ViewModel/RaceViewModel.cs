@@ -18,6 +18,7 @@ namespace MarioKartWeb.ViewModel
         public int ID { get; set; }
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Race Date")]
         public DateTime RaceDate { get; set; }
         [Required]

@@ -18,7 +18,7 @@ namespace MarioKartWeb.Controllers
         // GET: Standings
         public ActionResult Index()
         {
-            var drivers = db.Drivers.Where(x => x.Name != "" && x.Name != null);
+            var drivers = db.Drivers;
             var totalNumberOfRaces = CalculateTotalNumberOfRaces();
             List<Standings> standingsList = new List<Standings>();
             foreach (var driver in db.Drivers)
@@ -49,7 +49,8 @@ namespace MarioKartWeb.Controllers
         private int CalculateTotalNumberOfRaces()
         {
             int totalNumberOfRaces = 0;
-            foreach (var tournament in db.Tournaments)
+            // TO DO don't calculate just entered tournament LINQ
+            foreach (var tournament in db.Tournaments.Where(x => x.Points != 0))
             {
                 totalNumberOfRaces += 5;
             }

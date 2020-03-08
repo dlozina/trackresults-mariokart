@@ -1,4 +1,4 @@
-﻿@model MarioKartWeb.Models.Tournament
+﻿@model MarioKartWeb.ViewModel.TournamentViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Winer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Winer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Winer, Model.Drivers, String.Empty, new { @class = "form-control filter-drop-down" })
                 @Html.ValidationMessageFor(model => model.Winer, "", new { @class = "text-danger" })
             </div>
         </div>
