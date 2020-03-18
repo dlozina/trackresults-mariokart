@@ -64,8 +64,8 @@ namespace MarioKartWeb.Controllers
             var listOfGrandPrixs = db.GrandPrixes.OrderBy(x => x.ID).ToList();
             var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
 
-            string dateTimeNow = DateTime.Now.ToString("dd.MM.yyyy");
-            DateTime date = DateTime.ParseExact(dateTimeNow, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+            string dateTimeNow = DateTime.Now.ToString("dd/MMMM/yyyy");
+            DateTime date = DateTime.ParseExact(dateTimeNow, "dd/MMMM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
             vm.RaceDate = date;
 
             var lastRace = db.Races.OrderByDescending(x => x.ID).First();
