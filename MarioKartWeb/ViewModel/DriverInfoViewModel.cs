@@ -15,7 +15,7 @@ namespace MarioKartWeb.ViewModel
         public int NumberOfGrandPrixWon { get; set; }
         [Display(Name = "Number of Points")]
         public int NumberOfPoints { get; set; }
-        [Display(Name = "Races Entered")]
+        [Display(Name = "Grand Prix Entered")]
         public int GrandPrixEntered { get; set; }
         [Display(Name = "Tournaments Won")]
         public int TournamentsWon { get; set; }
