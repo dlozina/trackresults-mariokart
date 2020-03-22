@@ -1,13 +1,13 @@
-﻿using MarioKartWeb.Models;
+﻿using MarioKart.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace MarioKartWeb.Data
+namespace MarioKart.DataAccess.Data
 {
-    public class MarioKartWebContext : DbContext
+    public class MarioKartContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -16,13 +16,13 @@ namespace MarioKartWeb.Data
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public MarioKartWebContext() : base("name=MarioKartWebContext")
+        public MarioKartContext() : base("name=MarioKartWebContext")
         {
             //Database.SetInitializer(new GrandPrixesDBInitializer());
         }
-        public DbSet<MarioKartWeb.Models.Driver> Drivers { get; set; }
-        public DbSet<MarioKartWeb.Models.GrandPrix> GrandPrixes { get; set; }
-        public DbSet<MarioKartWeb.Models.Race> Races { get; set; }
-        public DbSet<MarioKartWeb.Models.Tournament> Tournaments { get; set; }
+        public DbSet<MarioKart.Model.Driver> Drivers { get; set; }
+        public DbSet<MarioKart.Model.GrandPrix> GrandPrixes { get; set; }
+        public DbSet<MarioKart.Model.Race> Races { get; set; }
+        public DbSet<MarioKart.Model.Tournament> Tournaments { get; set; }
     }
 }

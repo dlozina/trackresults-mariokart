@@ -8,21 +8,29 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using MarioKartWeb.Data;
-using MarioKartWeb.Models;
+using MarioKart.Model;
+using MarioKartService.ApplicationServices.Interfaces;
 using MarioKartWeb.ViewModel;
 
 namespace MarioKartWeb.Controllers
 {
     public class RacesController : Controller
     {
-        private MarioKartWebContext db = new MarioKartWebContext();
+        private readonly ITournaments tournamentsService;
+        private readonly IDrivers driversService;
+        private readonly IRaces racesService;
+        public RacesController(ITournaments tournamentsService, IDrivers driversService, IRaces racesService)
+        {
+            this.tournamentsService = tournamentsService;
+            this.driversService = driversService;
+            this.racesService = racesService;
+        }
 
         // GET: Races
         public ActionResult Index()
         {
             List<RaceViewModel> vms = new List<RaceViewModel>();
-            var races = db.Races.OrderByDescending(x => x.ID);
+            var races = racesService.GetRaces().OrderByDescending(x => x.ID);
 
             foreach(var race in races)
             {
@@ -47,12 +55,14 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Race race = db.Races.Find(id);
+            var race = racesService.GetRaces().Find(id);
             if (race == null)
             {
                 return HttpNotFound();
             }
-            return View(race);
+            RaceViewModel vm = new RaceViewModel();
+            vm = Mapper.Map<RaceViewModel>(race);
+            return View(vm);
         }
 
         // GET: Races/Create
@@ -60,15 +70,15 @@ namespace MarioKartWeb.Controllers
         {
             RaceViewModel vm = new RaceViewModel();
             
-            var listOfTournaments = db.Tournaments.OrderBy(x => x.ID).ToList();
-            var listOfGrandPrixs = db.GrandPrixes.OrderBy(x => x.ID).ToList();
-            var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
+            var listOfTournaments = tournamentsService.GetTournaments().OrderBy(x => x.ID).ToList();
+            var listOfGrandPrixs = racesService.GetGrandPrixes().OrderBy(x => x.ID).ToList();
+            var listOfDrivers = driversService.GetDrivers().OrderBy(x => x.Name).ToList();
 
             string dateTimeNow = DateTime.Now.ToString("dd/MMMM/yyyy");
             DateTime date = DateTime.ParseExact(dateTimeNow, "dd/MMMM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
             vm.RaceDate = date;
 
-            var lastRace = db.Races.OrderByDescending(x => x.ID).First();
+            var lastRace = racesService.GetRaces().OrderByDescending(x => x.ID).First();
 
             foreach (var tournament in listOfTournaments)
             {
@@ -116,8 +126,7 @@ namespace MarioKartWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Races.Add(model);
-                db.SaveChanges();
+                racesService.SaveNewRace(model);
                 return RedirectToAction("Index");
             }
             return View(vm);
@@ -131,7 +140,7 @@ namespace MarioKartWeb.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var entryId = db.Races.FirstOrDefault(x => x.ID == id);
+            var entryId = racesService.GetRaces().FirstOrDefault(x => x.ID == id);
             if (entryId == null)
             {
                 return HttpNotFound();
@@ -139,9 +148,9 @@ namespace MarioKartWeb.Controllers
 
             RaceViewModel vm = new RaceViewModel();
 
-            var listOfTournaments = db.Tournaments.OrderBy(x => x.ID).ToList();
-            var listOfGrandPrixs = db.GrandPrixes.OrderBy(x => x.ID).ToList();
-            var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
+            var listOfTournaments = tournamentsService.GetTournaments().OrderBy(x => x.ID).ToList();
+            var listOfGrandPrixs = racesService.GetGrandPrixes().OrderBy(x => x.ID).ToList();
+            var listOfDrivers = driversService.GetDrivers().OrderBy(x => x.Name).ToList();
 
             vm.RaceDate = DateTime.Parse(entryId.RaceDate.ToString());
 
@@ -194,8 +203,7 @@ namespace MarioKartWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Entry(model).State = EntityState.Modified;
-                db.SaveChanges();
+                racesService.EditRace(model);
                 return RedirectToAction("Index");
             }
             return View(vm);
@@ -208,12 +216,14 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Race race = db.Races.Find(id);
+            var race = racesService.GetRaces().Find(id);
+            RaceViewModel vm = new RaceViewModel();
+            vm = Mapper.Map<RaceViewModel>(race);
             if (race == null)
             {
                 return HttpNotFound();
             }
-            return View(race);
+            return View(vm);
         }
 
         // POST: Races/Delete/5
@@ -221,19 +231,18 @@ namespace MarioKartWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Race race = db.Races.Find(id);
-            db.Races.Remove(race);
-            db.SaveChanges();
+            var race = racesService.GetRaces().Find(id);
+            racesService.DeleteRace(race);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

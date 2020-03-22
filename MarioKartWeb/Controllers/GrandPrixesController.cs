@@ -6,19 +6,36 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MarioKartWeb.Data;
-using MarioKartWeb.Models;
+using AutoMapper;
+using MarioKart.Model;
+using MarioKartService.ApplicationServices.Interfaces;
+using MarioKartWeb.ViewModel;
 
 namespace MarioKartWeb.Controllers
 {
     public class GrandPrixesController : Controller
     {
-        private MarioKartWebContext db = new MarioKartWebContext();
+        private readonly IRaces racesService;
+        public GrandPrixesController(IRaces racesService)
+        {
+            this.racesService = racesService;
+        }
 
         // GET: GrandPrixes
         public ActionResult Index()
         {
-            return View(db.GrandPrixes.ToList());
+            List<GrandPrixViewModel> vms = new List<GrandPrixViewModel>();
+            var grandPrixes = racesService.GetGrandPrixes().OrderByDescending(x => x.ID);
+
+            foreach(var grandPrix in grandPrixes)
+            {
+                GrandPrixViewModel vm = new GrandPrixViewModel();
+                vm.ID = grandPrix.ID;
+                vm.Name = grandPrix.Name;
+                vms.Add(vm);
+            }
+
+            return View(vms);
         }
 
         // GET: GrandPrixes/Details/5
@@ -28,18 +45,21 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GrandPrix grandPrix = db.GrandPrixes.Find(id);
+            var grandPrix = racesService.GetGrandPrixes().Find(id);
             if (grandPrix == null)
             {
                 return HttpNotFound();
             }
-            return View(grandPrix);
+            GrandPrixViewModel vm = new GrandPrixViewModel();
+            vm = Mapper.Map<GrandPrixViewModel>(grandPrix);
+            return View(vm);
         }
 
         // GET: GrandPrixes/Create
         public ActionResult Create()
         {
-            return View();
+            GrandPrixViewModel vm = new GrandPrixViewModel();
+            return View(vm);
         }
 
         // POST: GrandPrixes/Create
@@ -47,16 +67,16 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name")] GrandPrix grandPrix)
+        public ActionResult Create(GrandPrixViewModel vm)
         {
+            var model = Mapper.Map<GrandPrix>(vm);
+
             if (ModelState.IsValid)
             {
-                db.GrandPrixes.Add(grandPrix);
-                db.SaveChanges();
+                racesService.SaveNewGrandPrix(model);
                 return RedirectToAction("Index");
             }
-
-            return View(grandPrix);
+            return View(vm);
         }
 
         // GET: GrandPrixes/Edit/5
@@ -66,12 +86,16 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GrandPrix grandPrix = db.GrandPrixes.Find(id);
+            var grandPrix = racesService.GetGrandPrixes().Find(id);
             if (grandPrix == null)
             {
                 return HttpNotFound();
             }
-            return View(grandPrix);
+
+            GrandPrixViewModel vm = new GrandPrixViewModel();
+            vm.Name = grandPrix.Name;
+
+            return View(vm);
         }
 
         // POST: GrandPrixes/Edit/5
@@ -79,15 +103,16 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name")] GrandPrix grandPrix)
+        public ActionResult Edit(GrandPrixViewModel vm)
         {
+            var model = Mapper.Map<GrandPrix>(vm);
+
             if (ModelState.IsValid)
             {
-                db.Entry(grandPrix).State = EntityState.Modified;
-                db.SaveChanges();
+                racesService.EditGrandPrix(model);
                 return RedirectToAction("Index");
             }
-            return View(grandPrix);
+            return View(vm);
         }
 
         // GET: GrandPrixes/Delete/5
@@ -97,12 +122,14 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GrandPrix grandPrix = db.GrandPrixes.Find(id);
+            var grandPrix = racesService.GetGrandPrixes().Find(id);
+            GrandPrixViewModel vm = new GrandPrixViewModel();
+            vm = Mapper.Map<GrandPrixViewModel>(grandPrix);
             if (grandPrix == null)
             {
                 return HttpNotFound();
             }
-            return View(grandPrix);
+            return View(vm);
         }
 
         // POST: GrandPrixes/Delete/5
@@ -110,19 +137,18 @@ namespace MarioKartWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            GrandPrix grandPrix = db.GrandPrixes.Find(id);
-            db.GrandPrixes.Remove(grandPrix);
-            db.SaveChanges();
+            var grandPrix = racesService.GetGrandPrixes().Find(id);
+            racesService.DeleteGrandPrix(grandPrix);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

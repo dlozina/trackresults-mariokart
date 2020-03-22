@@ -1,11 +1,4 @@
-﻿using AutoMapper;
-using MarioKartWeb.App_Start;
-using MarioKartWeb.Models;
-using MarioKartWeb.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using MarioKartWeb.App_Start;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -22,6 +15,8 @@ namespace MarioKartWeb
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             // AutoMapper
             AutoMapperConfig.Configure();
+            // DI configure
+            DIConfig.Configure();
         }
     }
 }

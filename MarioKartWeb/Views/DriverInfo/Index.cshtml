@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MarioKartWeb.ViewModel.DriverInfoViewModel>
+@{
+    ViewBag.Title = "Drivers";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Drivers 2020</h2>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 25px;">
+        <div class="col-lg-12">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            Driver Details
+                        </th>
+
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                 {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                 }
+
+            </table>
+        </div>
+    </div>
+
+</div>

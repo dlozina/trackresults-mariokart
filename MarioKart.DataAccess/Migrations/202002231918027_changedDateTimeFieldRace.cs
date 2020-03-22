@@ -1,4 +1,4 @@
-namespace MarioKartWeb.Migrations
+namespace MarioKart.DataAccess.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

@@ -1,9 +1,5 @@
-﻿using MarioKartWeb.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MarioKartWeb.ViewModel
@@ -15,10 +11,12 @@ namespace MarioKartWeb.ViewModel
             this.TournamentStandings = tournamentStandings;
             Tournaments = new List<SelectListItem>();
         }
+
         public IEnumerable<TournamentStandingsViewModel> TournamentStandings { get; private set; }
+
         [Display(Name = "Tournament Name")]
         public string TournamentName { get; set; }
-        public List<SelectListItem> Tournaments { get; set; }
 
+        public List<SelectListItem> Tournaments { get; set; }
     }
 }

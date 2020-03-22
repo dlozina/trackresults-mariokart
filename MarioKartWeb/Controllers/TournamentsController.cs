@@ -1,27 +1,32 @@
-﻿using System;
+﻿using AutoMapper;
+using MarioKart.Model;
+using MarioKartService.ApplicationServices.Interfaces;
+using MarioKartWeb.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using AutoMapper;
-using MarioKartWeb.Data;
-using MarioKartWeb.Models;
-using MarioKartWeb.ViewModel;
 
 namespace MarioKartWeb.Controllers
 {
     public class TournamentsController : Controller
     {
-        private MarioKartWebContext db = new MarioKartWebContext();
+        private readonly ITournaments tournamentsService;
+        private readonly IDrivers driversService;
+
+        public TournamentsController(ITournaments tournamentsService, IDrivers driversService)
+        {
+            this.tournamentsService = tournamentsService;
+            this.driversService = driversService;
+        }
 
         // GET: Tournaments
         public ActionResult Index()
         {
             List<TournamentViewModel> vms = new List<TournamentViewModel>();
-            var tournaments = db.Tournaments.OrderBy(x => x.ID);
+            var tournaments = tournamentsService.GetTournaments().OrderBy(x => x.ID);
 
             foreach (var tournament in tournaments)
             {
@@ -33,7 +38,6 @@ namespace MarioKartWeb.Controllers
                 vm.Points = tournament.Points;
                 vms.Add(vm);
             }
-
             return View(vms);
         }
 
@@ -44,12 +48,15 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
+            var tournament = tournamentsService.GetTournaments().Find(id);
             if (tournament == null)
             {
                 return HttpNotFound();
             }
-            return View(tournament);
+
+            TournamentViewModel vm = new TournamentViewModel();
+            vm = Mapper.Map<TournamentViewModel>(tournament);
+            return View(vm);
         }
 
         // GET: Tournaments/Create
@@ -57,7 +64,7 @@ namespace MarioKartWeb.Controllers
         {
             TournamentViewModel vm = new TournamentViewModel();
 
-            var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
+            var listOfDrivers = driversService.GetDrivers().OrderBy(x => x.Name).ToList();
 
             foreach (var driver in listOfDrivers)
             {
@@ -66,14 +73,12 @@ namespace MarioKartWeb.Controllers
                     Text = driver.Name,
                     Value = driver.Name
                 });
-
             }
-
             return View(vm);
         }
 
         // POST: Tournaments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -83,11 +88,9 @@ namespace MarioKartWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Tournaments.Add(model);
-                db.SaveChanges();
+                tournamentsService.SaveNewTournament(model);
                 return RedirectToAction("Index");
             }
-
             return View(vm);
         }
 
@@ -98,14 +101,14 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var entryId = db.Tournaments.FirstOrDefault(x => x.ID == id);
+            var entryId = tournamentsService.GetTournaments().FirstOrDefault(x => x.ID == id);
             if (entryId == null)
             {
                 return HttpNotFound();
             }
             TournamentViewModel vm = new TournamentViewModel();
 
-            var listOfDrivers = db.Drivers.OrderBy(x => x.Name).ToList();
+            var listOfDrivers = driversService.GetDrivers().OrderBy(x => x.Name).ToList();
 
             vm.RaceDate = DateTime.Parse(entryId.RaceDate.ToString());
 
@@ -116,7 +119,6 @@ namespace MarioKartWeb.Controllers
                     Text = driver.Name,
                     Value = driver.Name
                 });
-
             }
             vm.TournamentName = entryId.TournamentName;
             vm.Winer = entryId.Winer;
@@ -126,7 +128,7 @@ namespace MarioKartWeb.Controllers
         }
 
         // POST: Tournaments/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -136,8 +138,7 @@ namespace MarioKartWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Entry(model).State = EntityState.Modified;
-                db.SaveChanges();
+                tournamentsService.EditTournament(model);
                 return RedirectToAction("Index");
             }
             return View(vm);
@@ -150,12 +151,14 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
+            var tournament = tournamentsService.GetTournaments().Find(id);
+            TournamentViewModel vm = new TournamentViewModel();
+            vm = Mapper.Map<TournamentViewModel>(tournament);
             if (tournament == null)
             {
                 return HttpNotFound();
             }
-            return View(tournament);
+            return View(vm);
         }
 
         // POST: Tournaments/Delete/5
@@ -163,19 +166,18 @@ namespace MarioKartWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tournament tournament = db.Tournaments.Find(id);
-            db.Tournaments.Remove(tournament);
-            db.SaveChanges();
+            var tournament = tournamentsService.GetTournaments().Find(id);
+            tournamentsService.DeleteTournament(tournament);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

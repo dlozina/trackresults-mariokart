@@ -6,19 +6,42 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MarioKartWeb.Data;
-using MarioKartWeb.Models;
+using AutoMapper;
+using MarioKart.Model;
+using MarioKartService.ApplicationServices.Interfaces;
+using MarioKartWeb.ViewModel;
 
 namespace MarioKartWeb.Controllers
 {
     public class DriversController : Controller
     {
-        private MarioKartWebContext db = new MarioKartWebContext();
+        private readonly IDrivers driversService;
+        private readonly IRaces racesService;
+
+        public DriversController(IDrivers driversService, IRaces racesService)
+        {
+            this.driversService = driversService;
+            this.racesService = racesService;
+        }
 
         // GET: Drivers
         public ActionResult Index()
         {
-            return View(db.Drivers.ToList());
+            List<DriverViewModel> vms = new List<DriverViewModel>();
+            var drivers = driversService.GetDrivers().OrderByDescending(x => x.ID);
+
+            foreach(var driver in drivers)
+            {
+                DriverViewModel vm = new DriverViewModel();
+                vm.ID = driver.ID;
+                vm.Name = driver.Name;
+                vm.Description = driver.Description;
+                vm.FavoriteTrack = driver.FavoriteTrack;
+                vm.FavoriteCar = driver.FavoriteCar;
+                vms.Add(vm);
+            }
+
+            return View(vms);
         }
 
         // GET: Drivers/Details/5
@@ -28,17 +51,20 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Driver drivers = db.Drivers.Find(id);
-            if (drivers == null)
+            var driver = driversService.GetDrivers().Find(id);
+            if (driver == null)
             {
                 return HttpNotFound();
             }
-            return View(drivers);
+            DriverViewModel vm = new DriverViewModel();
+            vm = Mapper.Map<DriverViewModel>(driver);
+            return View(vm);
         }
 
         // GET: Drivers/Create
         public ActionResult Create()
         {
+            DriverViewModel vm = new DriverViewModel();
             return View();
         }
 
@@ -47,16 +73,16 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Description,FavoriteTrack,FavoriteCar")] Driver drivers)
+        public ActionResult Create(DriverViewModel vm)
         {
+            var model = Mapper.Map<Driver>(vm);
+
             if (ModelState.IsValid)
             {
-                db.Drivers.Add(drivers);
-                db.SaveChanges();
+                driversService.SaveNewDriver(model);
                 return RedirectToAction("Index");
             }
-
-            return View(drivers);
+            return View(vm);
         }
 
         // GET: Drivers/Edit/5
@@ -66,12 +92,18 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Driver drivers = db.Drivers.Find(id);
-            if (drivers == null)
+            var driver = driversService.GetDrivers().Find(id);
+            if (driver == null)
             {
                 return HttpNotFound();
             }
-            return View(drivers);
+            DriverViewModel vm = new DriverViewModel();
+            vm.Name = driver.Name;
+            vm.Description = driver.Description;
+            vm.FavoriteTrack = driver.FavoriteTrack;
+            vm.FavoriteCar = driver.FavoriteCar;
+
+            return View(vm);
         }
 
         // POST: Drivers/Edit/5
@@ -79,15 +111,16 @@ namespace MarioKartWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Description,FavoriteTrack,FavoriteCar")] Driver drivers)
+        public ActionResult Edit(DriverViewModel vm)
         {
+            var model = Mapper.Map<Driver>(vm);
             if (ModelState.IsValid)
             {
-                db.Entry(drivers).State = EntityState.Modified;
-                db.SaveChanges();
+                driversService.EditDriver(model);
                 return RedirectToAction("Index");
             }
-            return View(drivers);
+            // TO DO vracamo prazan VM
+            return View(vm);
         }
 
         // GET: Drivers/Delete/5
@@ -97,12 +130,14 @@ namespace MarioKartWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Driver drivers = db.Drivers.Find(id);
-            if (drivers == null)
+            var driver = driversService.GetDrivers().Find(id);
+            DriverViewModel vm = new DriverViewModel();
+            vm = Mapper.Map<DriverViewModel>(driver);
+            if (driver == null)
             {
                 return HttpNotFound();
             }
-            return View(drivers);
+            return View(vm);
         }
 
         // POST: Drivers/Delete/5
@@ -110,19 +145,18 @@ namespace MarioKartWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Driver drivers = db.Drivers.Find(id);
-            db.Drivers.Remove(drivers);
-            db.SaveChanges();
+            var driver = driversService.GetDrivers().Find(id);
+            driversService.DeleteDriver(driver);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }
