@@ -1,7 +1,29 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div id="additionalInfo" title="Additional Information">
+    <p>Use this area to provide additional information.</p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/moment")
+    @Scripts.Render("~/plugins/dataTablesDateTimeSort")
+
+    
+    <script>
+        // JQuery test page
+        $(document).ready(function () {
+            //var id = $('#additionalInfo');
+            //    alert(id.html());
+            //alert($('div:contains("to provide additional")').html());
+        });
+
+
+    </script>
+}

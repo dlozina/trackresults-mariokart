@@ -32,3 +32,43 @@ textarea {
     margin-top: 25px;
 }*/
 
+.backgound {
+    background-image: url('/Content/Photos/Background/fMarioKart8.jpg');
+    /*background-position: right top;
+    background-repeat: repeat;
+    padding: 15px;*/
+}
+
+.whitebackground {
+    background-color: white;
+}
+
+.divcenter {
+    margin: 0 auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.divborder {
+    border-style: solid;
+    border-color: black;
+}
+
+.imageborder {
+    border-style: solid;
+    border-color: black;
+}
+
+/* Image border */
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+/*img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}*/
+

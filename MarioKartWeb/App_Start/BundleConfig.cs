@@ -24,7 +24,7 @@ namespace MarioKartWeb
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/mystyle.css"));
             // dataTables css styles
             bundles.Add(new StyleBundle("~/Content/dataTablesStyles").Include(
                       "~/Content/plugins/dataTables/datatables.min.css"));

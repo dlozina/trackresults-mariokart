@@ -8,7 +8,7 @@
     @Styles.Render("~/Content/dataTablesStyles")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body id="backgound" class="backgound">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -24,7 +24,6 @@
                     <li>@Html.ActionLink("Standings", "Index", "Standings")</li>
                     <li>@Html.ActionLink("Tournament Standings", "Index", "TournamentStandings")</li>
                     <li>@Html.ActionLink("Drivers Info", "Index", "DriverInfo")</li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Administrator
@@ -36,13 +35,13 @@
                             <li>@Html.ActionLink("Add or Edit Drivers", "Index", "Drivers")</li>
                             <li>@Html.ActionLink("Add or Edit Grand Prix List", "Index", "GrandPrixes")</li>
                         </ul>
-
                     </li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content whitebackground divborder" >
         @RenderBody()
         <hr />
         <footer>

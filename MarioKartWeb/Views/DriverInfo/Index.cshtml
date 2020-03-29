@@ -3,42 +3,90 @@
     ViewBag.Title = "Drivers";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h2>Drivers 2020</h2>
-        </div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Drivers 2020</h2>
     </div>
-
-    <div class="row" style="margin-top: 25px;">
-        <div class="col-lg-12">
-
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
-                        <th>
-                            Driver Details
-                        </th>
-
-                    </tr>
-                </thead>
-                @foreach (var item in Model)
-                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })
-                        </td>
-                    </tr>
-                 }
-
-            </table>
-        </div>
-    </div>
-
 </div>
+
+@*<div class="col-sm-12 text-center" >
+    <img src="~/Content/Photos/Players/Donkey.jpg" alt="Driver Photo">
+    <img src="~/Content/Photos/Players/Link.jpg" alt="Driver Photo">
+</div>
+
+<div class="col-sm-12 text-center">
+    <img src="~/Content/Photos/Players/Tanooki.jpg" alt="Driver Photo">
+    <img src="~/Content/Photos/Players/Toad.jpg" alt="Driver Photo">
+</div>
+<div class="col-sm-12 text-center">
+    <img src="~/Content/Photos/Players/Roy.jpg" alt="Driver Photo">
+</div>*@
+
+<div class="row" style="margin-top: 25px;">
+    <div class="col-lg-12">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 500px">
+                        Photo
+                    </th>
+
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+
+                    <th class="text-center">
+                        Driver Details
+                    </th>
+
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="text-center" style="width: 205px">
+                        @if (item.ID == 1)
+                        {
+                                <img src="~/Content/Photos/Players/bLink.jpg" alt="Driver Photo">
+                        }
+                        @if (item.ID == 2)
+                        {
+                            <img src="~/Content/Photos/Players/bDonkey.jpg" alt="Driver Photo">
+                        }
+                        @if (item.ID == 3)
+                        {
+                            <img src="~/Content/Photos/Players/bTanooki.jpg" alt="Driver Photo">
+                        }
+                        @if (item.ID == 4)
+                        {
+                            <img src="~/Content/Photos/Players/bRoy.jpg" alt="Driver Photo">
+                        }
+                        @if (item.ID == 5)
+                        {
+                            <img src="~/Content/Photos/Players/bToad.jpg" alt="Driver Photo">
+                        }
+                    </td>
+
+                     <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    
+                    <td class="text-center">
+                        @Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })
+
+                        @*<a href='@Html.Action("DriverDetails", new { id = item.ID })'>
+                            <img src="~/Content/Photos/Players/Donkey.jpg" />
+                            <img src="@Url.Content("~/Content/Photos/Players/Donkey.jpg")" />
+                        </a>*@
+                    </td>
+
+                </tr>
+                }
+
+        </table>
+    </div>
+</div>
+
+

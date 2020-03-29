@@ -4,91 +4,91 @@
     ViewBag.Title = "Races";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h2>Grand prix races and driver points</h2>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 25px;">
-        <div class="col-sm-12">
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-        </div>
-    </div>
-    <div class="row" style="margin-top: 25px;">
-        <div class="col-lg-12">
 
-            <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
-                <thead>
-                    <tr>
-                        <th style="text-align: center;">
-                            @Html.DisplayNameFor(model => model.RaceDate)
-                        </th>
-                        <th style="text-align:center;">
-                            @Html.DisplayNameFor(model => model.TournamentName)
-                        </th>
-                        <th style="text-align:center;">
-                            @Html.DisplayNameFor(model => model.GrandPrixName)
-                        </th>
-                        <th style="text-align:center;">
-                            @Html.DisplayNameFor(model => model.Driver)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Position)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Points)
-                        </th>
-                        <th style="text-align:center;">
-                            Edit
-                        </th>
-                        <th style="text-align:center;">
-                            Details
-                        </th>
-                        <th style="text-align:center;">
-                            Delete
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td style="text-align:center; width:100px;">
-                                @Html.DisplayFor(model => item.RaceDate)
-                            </td>
-                            <td style="text-align:center;">
-                                @Html.DisplayFor(model => item.TournamentName)
-                            </td>
-                            <td style="text-align:center; width:150px;">
-                                @Html.DisplayFor(model => item.GrandPrixName)
-                            </td>
-                            <td style="text-align:center; width:150px;">
-                                @Html.DisplayFor(model => item.Driver)
-                            </td>
-                            <td style="text-align:center; width:150px;">
-                                @Html.DisplayFor(model => item.Position)
-                            </td>
-                            <td style="text-align:center; width:150px;">
-                                @Html.DisplayFor(model => item.Points)
-                            </td>
-                            <td style="text-align:center;">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
-                            </td>
-                            <td style="text-align:center;">
-                                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" })
-                            </td>
-                            <td style="text-align:center;">
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-        </div>
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Grand prix races and driver points</h2>
     </div>
 </div>
+<div class="row" style="margin-top: 25px;">
+    <div class="col-sm-12">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+<div class="row" style="margin-top: 25px;">
+    <div class="col-lg-12">
+
+        <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">
+                        @Html.DisplayNameFor(model => model.RaceDate)
+                    </th>
+                    <th style="text-align:center;">
+                        @Html.DisplayNameFor(model => model.TournamentName)
+                    </th>
+                    <th style="text-align:center;">
+                        @Html.DisplayNameFor(model => model.GrandPrixName)
+                    </th>
+                    <th style="text-align:center;">
+                        @Html.DisplayNameFor(model => model.Driver)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Position)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Points)
+                    </th>
+                    <th style="text-align:center;">
+                        Edit
+                    </th>
+                    <th style="text-align:center;">
+                        Details
+                    </th>
+                    <th style="text-align:center;">
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align:center; width:100px;">
+                            @Html.DisplayFor(model => item.RaceDate)
+                        </td>
+                        <td style="text-align:center;">
+                            @Html.DisplayFor(model => item.TournamentName)
+                        </td>
+                        <td style="text-align:center; width:150px;">
+                            @Html.DisplayFor(model => item.GrandPrixName)
+                        </td>
+                        <td style="text-align:center; width:150px;">
+                            @Html.DisplayFor(model => item.Driver)
+                        </td>
+                        <td style="text-align:center; width:150px;">
+                            @Html.DisplayFor(model => item.Position)
+                        </td>
+                        <td style="text-align:center; width:150px;">
+                            @Html.DisplayFor(model => item.Points)
+                        </td>
+                        <td style="text-align:center;">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        </td>
+                        <td style="text-align:center;">
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" })
+                        </td>
+                        <td style="text-align:center;">
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
 
 
 @section Scripts {
