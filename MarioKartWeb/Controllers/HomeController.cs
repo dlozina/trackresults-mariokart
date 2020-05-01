@@ -26,5 +26,10 @@ namespace MarioKartWeb.Controllers
 
             return View();
         }
+
+        public ActionResult Ajax(string pers)
+        {
+            return Json(pers);
+        }
     }
 }

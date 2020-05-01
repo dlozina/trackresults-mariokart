@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<MarioKartWeb.ViewModel.DriverInfoViewModel>
 @{
-    ViewBag.Title = "Drivers";
+    ViewBag.Title = "Drivers Info";
 }
 
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "Home") <span class="divider"></span></li>
+    <li>Drivers Info</li>
+</ul>
 
 <div class="row">
     <div class="col-sm-12">
