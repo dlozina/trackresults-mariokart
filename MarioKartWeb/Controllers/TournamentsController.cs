@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace MarioKartWeb.Controllers
 {
+    [Authorize]
     public class TournamentsController : Controller
     {
         private readonly ITournaments tournamentsService;

@@ -13,6 +13,7 @@ using MarioKartWeb.ViewModel;
 
 namespace MarioKartWeb.Controllers
 {
+    [Authorize]
     public class DriversController : Controller
     {
         private readonly IDrivers driversService;

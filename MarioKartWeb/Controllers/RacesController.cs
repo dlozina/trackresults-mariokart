@@ -14,6 +14,7 @@ using MarioKartWeb.ViewModel;
 
 namespace MarioKartWeb.Controllers
 {
+    [Authorize]
     public class RacesController : Controller
     {
         private readonly ITournaments tournamentsService;
