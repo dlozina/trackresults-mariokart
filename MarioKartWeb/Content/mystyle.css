@@ -60,6 +60,13 @@ textarea {
     border-color: black;
 }
 
+.topmarginallcontent {
+    margin-top: 30px;
+}
+.topmarginrendered {
+    margin-top: 15px;
+}
+
 /* Image border */
 img {
   border: 1px solid #ddd;

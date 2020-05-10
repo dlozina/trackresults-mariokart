@@ -52,8 +52,10 @@
             </div>
         </div>
     </div>
-    <div class="container body-content whitebackground divborder" >
-        @RenderBody()
+    <div class="container body-content whitebackground divborder topmarginallcontent">
+        <div class="topmarginrendered">
+            @RenderBody()
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Mario Kart </p>
