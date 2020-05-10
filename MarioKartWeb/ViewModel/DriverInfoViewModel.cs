@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarioKart.Model.HelperClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,10 @@ namespace MarioKartWeb.ViewModel
 {
     public class DriverInfoViewModel
     {
+        public DriverInfoViewModel()
+        {
+            OverallGrandPrixResults = new List<GrandPrixResults>();
+        }
         public int ID { get; set; }
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -25,5 +30,6 @@ namespace MarioKartWeb.ViewModel
         public string FavoriteCar { get; set; }
         [Display(Name = "Description")]
         public string Description { get; set; }
+        public List<GrandPrixResults> OverallGrandPrixResults;
     }
 }

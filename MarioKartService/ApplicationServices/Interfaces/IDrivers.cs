@@ -1,4 +1,6 @@
 ﻿using MarioKart.Model;
+using MarioKart.Model.HelperClass;
+using System.Collections.Generic;
 using System.Data.Entity;
 
 namespace MarioKartService.ApplicationServices.Interfaces
@@ -13,5 +15,6 @@ namespace MarioKartService.ApplicationServices.Interfaces
         int NumberOfPoints(string driver);
         int GrandPrixEntered(string driver);
         int TournamentsWon(string driver);
+        List<GrandPrixResults> OverallGrandPrixResults(string driver);
     }
 }

@@ -11,7 +11,7 @@
 </ul>
 
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <h2>Tournament Standings</h2>
     </div>
 </div>
@@ -29,17 +29,17 @@
     </div>
 </div>
 <div class="row" style="margin-top: 25px;">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
             <thead>
                 <tr>
-                    <th style="width: 20%;">
+                    <th style="text-align:center;">
                         @Html.DisplayNameFor(model => modelUI.Position)
                     </th>
-                    <th style="text-align:left;">
+                    <th style="text-align:center;">
                         @Html.DisplayNameFor(model => modelUI.DriverName)
                     </th>
-                    <th>
+                    <th style="text-align:center;">
                         @Html.DisplayNameFor(model => modelUI.Points)
                     </th>
 
@@ -49,13 +49,13 @@
                 @foreach (var item in Model.TournamentStandings)
                 {
                     <tr>
-                        <td style="width:100px;">
+                        <td style="text-align:right;">
                             @Html.DisplayFor(model => item.Position)
                         </td>
-                        <td style="text-align:left;">
+                        <td style="text-align:center;">
                             @Html.DisplayFor(model => item.DriverName)
                         </td>
-                        <td style="text-align:center; width:150px;">
+                        <td style="text-align:center;">
                             @Html.DisplayFor(model => item.Points)
                         </td>
                     </tr>

@@ -55,6 +55,7 @@ namespace MarioKartWeb.Controllers
             vm.FavoriteTrack = driver.FavoriteTrack;
             vm.FavoriteCar = driver.FavoriteCar;
             vm.Description = driver.Description;
+            vm.OverallGrandPrixResults = driversService.OverallGrandPrixResults(driver.Name);
 
             return View(vm);
         }

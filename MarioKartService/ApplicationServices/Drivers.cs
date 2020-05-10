@@ -1,6 +1,8 @@
 ﻿using MarioKart.DataAccess.Data;
 using MarioKart.Model;
+using MarioKart.Model.HelperClass;
 using MarioKartService.ApplicationServices.Interfaces;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -57,6 +59,22 @@ namespace MarioKartService.ApplicationServices
         {
             var tournamentsWon = db.Tournaments.Where(x => x.Winer.Equals(driver)).Count();
             return tournamentsWon;
+        }
+        public List<GrandPrixResults> OverallGrandPrixResults(string driver)
+        {
+            var grandPrixes = db.GrandPrixes;
+            List<GrandPrixResults> grandPrixResults = new List<GrandPrixResults>();
+            foreach (var grandPrix in grandPrixes)
+            {
+                GrandPrixResults gpResult = new GrandPrixResults();
+                var numberOfGrandPrixWon = db.Races.Where(x => x.Driver.Equals(driver) && x.GrandPrixName.Equals(grandPrix.Name) && x.Position == 1).Count();
+                var numberOfGrandPrixEntered = db.Races.Where(x => x.Driver.Equals(driver) && x.GrandPrixName.Equals(grandPrix.Name)).Count();
+                gpResult.GrandPrixName = grandPrix.Name;
+                gpResult.GrandPrixWins = numberOfGrandPrixWon;
+                gpResult.GrandPrixEntered = numberOfGrandPrixEntered;
+                grandPrixResults.Add(gpResult);
+            }
+            return grandPrixResults;
         }
     }
 }

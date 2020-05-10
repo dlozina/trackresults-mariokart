@@ -3,12 +3,12 @@
     ViewBag.Title = "Detail Driver Information";
 }
 
-
 <div class="row">
     <div class="col-sm-12">
         <h2>Driver information</h2>
     </div>
 </div>
+<hr />
 <div class="row">
     <dl class="dl-horizontal">
         <dt>
@@ -76,6 +76,62 @@
         </dd>
     </dl>
 </div>
+<hr />
+<div class="row">
+    <div class="col-lg-4">
+        <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
+            <thead>
+                <tr>
+                    <th style="text-align:center;">
+                        Grand Prix Name
+                    </th>
+                    <th style="text-align:center;">
+                        Grand Prix Wins
+                    </th>
+                    <th style="text-align:center;">
+                        Grand Prix Entered
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OverallGrandPrixResults)
+                {
+                    <tr>
+                        <td style="text-align:left; width:150px;">
+                            @Html.DisplayFor(model => item.GrandPrixName)
+                        </td>
+                        <td style="text-align:center; width:150px;">
+                            @Html.DisplayFor(model => item.GrandPrixWins)
+                        </td>
+                        <td style="text-align:center; width:150px;">
+                            @Html.DisplayFor(model => item.GrandPrixEntered)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/dataTablesDateTimeSort")
+
+    <script>
+        $(document).ready(function () {
+            $('#DataTables_Table_0').DataTable({
+                paging:   false,
+                ordering: false,
+                info: false,
+                searching: false,
+            });
+        });
+    </script>
+}
+
+
+
 
 
 
