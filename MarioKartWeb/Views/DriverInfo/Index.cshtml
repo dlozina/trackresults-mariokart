@@ -29,23 +29,26 @@
 
 <div class="row" style="margin-top: 25px;">
     <div class="col-lg-4">
+
+    </div>
+    <div class="col-lg-4">
         <table class="table">
-            <thead>
-                <tr>
-                    <th class="text-center" style="width: 200px">
-                        Photo
-                    </th>
+            @*<thead>
+                    <tr>
+                        <th class="text-center" style="width: 200px">
+                            Photo
+                        </th>
 
-                    <th class="text-center" style="width: 200px">
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
+                        <th class="text-center" style="width: 200px">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
 
-                    <th class="text-center" style="width: 200px">
-                        Driver Details
-                    </th>
+                        <th class="text-center" style="width: 200px">
+                            Driver Details
+                        </th>
 
-                </tr>
-            </thead>
+                    </tr>
+                </thead>*@
             @foreach (var item in Model)
             {
                 <tr>
@@ -70,7 +73,7 @@
                         {
                             <img src="~/Content/Photos/Players/bToad.jpg" alt="Driver Photo">
                         }
-                    </td>
+
 
                     <td class="text-center">
                         @Html.DisplayFor(modelItem => item.Name)
@@ -84,10 +87,12 @@
                                 <img src="@Url.Content("~/Content/Photos/Players/Donkey.jpg")" />
                             </a>*@
                     </td>
-
                 </tr>
             }
 
         </table>
+    </div>
+    <div class="col-lg-4">
+
     </div>
 </div>
