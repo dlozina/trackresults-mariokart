@@ -11,59 +11,59 @@
 </ul>
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12 text-center">
         <h2>Tournament Standings</h2>
     </div>
 </div>
 <div class="row" style="margin-top: 25px;">
-    <div class="row">
-        <div class="col-sm-12">
+        <div class="col-lg-6">
             <div class="form-group">
-                @Html.LabelFor(model => model.TournamentName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                    @Html.LabelFor(model => model.TournamentName, htmlAttributes: new { @class = "control-label col-md-4 text-left" })
+                <div class="col-md-6">
                     @Html.DropDownListFor(model => model.TournamentName, Model.Tournaments, new { @id = "TournamentSelection", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.TournamentName, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row" style="margin-top: 25px;">
-    <div class="col-sm-6">
-        <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
-            <thead>
-                <tr>
-                    <th style="text-align:center;">
-                        @Html.DisplayNameFor(model => modelUI.Position)
-                    </th>
-                    <th style="text-align:center;">
-                        @Html.DisplayNameFor(model => modelUI.DriverName)
-                    </th>
-                    <th style="text-align:center;">
-                        @Html.DisplayNameFor(model => modelUI.Points)
-                    </th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.TournamentStandings)
-                {
+        <div class="col-lg-4">
+            <table class="table" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
+                <thead>
                     <tr>
-                        <td style="text-align:right;">
-                            @Html.DisplayFor(model => item.Position)
-                        </td>
-                        <td style="text-align:center;">
-                            @Html.DisplayFor(model => item.DriverName)
-                        </td>
-                        <td style="text-align:center;">
-                            @Html.DisplayFor(model => item.Points)
-                        </td>
+                        <th style="text-align:center;">
+                            @Html.DisplayNameFor(model => modelUI.Position)
+                        </th>
+                        <th style="text-align:center;">
+                            @Html.DisplayNameFor(model => modelUI.DriverName)
+                        </th>
+                        <th style="text-align:center;">
+                            @Html.DisplayNameFor(model => modelUI.Points)
+                        </th>
+
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.TournamentStandings)
+                    {
+                        <tr>
+                            <td style="text-align:right;">
+                                @Html.DisplayFor(model => item.Position)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(model => item.DriverName)
+                            </td>
+                            <td style="text-align:center;">
+                                @Html.DisplayFor(model => item.Points)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 </div>
+
+@*<div class="row" style="margin-top: 25px;">
+    
+</div>*@
 
 
 @section Scripts {

@@ -9,7 +9,7 @@
 </ul>
 
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 text-center">
         <h2>Drivers 2020</h2>
     </div>
 </div>
@@ -28,32 +28,31 @@
 </div>*@
 
 <div class="row" style="margin-top: 25px;">
-    <div class="col-lg-12">
-
-        <table class="table table-striped">
+    <div class="col-lg-4">
+        <table class="table">
             <thead>
                 <tr>
-                    <th class="text-center" style="width: 500px">
+                    <th class="text-center" style="width: 200px">
                         Photo
                     </th>
 
-                    <th class="text-center">
+                    <th class="text-center" style="width: 200px">
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
 
-                    <th class="text-center">
+                    <th class="text-center" style="width: 200px">
                         Driver Details
                     </th>
 
                 </tr>
             </thead>
             @foreach (var item in Model)
-                {
+            {
                 <tr>
-                    <td class="text-center" style="width: 205px">
+                    <td class="text-center">
                         @if (item.ID == 1)
                         {
-                                <img src="~/Content/Photos/Players/bLink.jpg" alt="Driver Photo">
+                            <img src="~/Content/Photos/Players/bLink.jpg" alt="Driver Photo">
                         }
                         @if (item.ID == 2)
                         {
@@ -73,24 +72,22 @@
                         }
                     </td>
 
-                     <td class="text-center">
+                    <td class="text-center">
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
-                    
+
                     <td class="text-center">
                         @Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })
 
                         @*<a href='@Html.Action("DriverDetails", new { id = item.ID })'>
-                            <img src="~/Content/Photos/Players/Donkey.jpg" />
-                            <img src="@Url.Content("~/Content/Photos/Players/Donkey.jpg")" />
-                        </a>*@
+                                <img src="~/Content/Photos/Players/Donkey.jpg" />
+                                <img src="@Url.Content("~/Content/Photos/Players/Donkey.jpg")" />
+                            </a>*@
                     </td>
 
                 </tr>
-                }
+            }
 
         </table>
     </div>
 </div>
-
-
