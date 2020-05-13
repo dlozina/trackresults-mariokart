@@ -25,14 +25,8 @@ namespace MarioKartWeb.Controllers
         {
             var drivers = driversService.GetDrivers();
             var totalNumberOfRaces = standingsCalculation.CalculateTotalNumberOfRaces();
-            List<Standings> standingsList = new List<Standings>();
 
-            foreach(var driver in drivers)
-            {
-                var points = standingsCalculation.CalculateStandingsForAllDrivers(driver.Name, totalNumberOfRaces);
-                standingsList.Add(points);
-            }
-            var model = standingsCalculation.StandingsList(standingsList);
+            var model = standingsCalculation.CalculateStandingsForAllDrivers(drivers, totalNumberOfRaces);
             var modelVM = Mapper.Map<IEnumerable<StandingsViewModel>>(model);
             var vm = new StandingsIndexViewModel(modelVM);
 

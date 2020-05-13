@@ -16,6 +16,8 @@ namespace MarioKartWeb.ViewModel
         public int ID { get; set; }
         [Display(Name = "Name")]
         public string Name { get; set; }
+        [Display(Name = "Position")]
+        public int Position { get; set; }
         [Display(Name = "Grand Prix Won")]
         public int NumberOfGrandPrixWon { get; set; }
         [Display(Name = "Number of Points")]

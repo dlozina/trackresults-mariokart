@@ -1,26 +1,79 @@
-﻿@{
+﻿@model IEnumerable<MarioKartWeb.ViewModel.HomeViewModel>
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
     <h1>MARIO KART TOURNAMENTS</h1>
-    <p>We are fast!</p>
+    <hr class="my-4">
+    <p class="lead">We are fast!</p>
     @Html.ActionLink("Learn More", "About", "Home", null, new { @class = "btn btn-success" })
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>MK 10 is under way</h2>
-        <p>
-            Who will win MK10: Who will be the last man standing!
-        </p>
+    <div class="col-md-6">
+        <h2>MK 12 is under way !</h2>
+        <table>
+            <tr>
+                <th style="width:100px;">Name:</th>
+                <td>MK12: Quest for glory</td>
+            </tr>
+            <tr>
+                <th style="width:100px;">Date:</th>
+                <td>17.05.2020</td>
+            </tr>
+            <tr>
+                <th style="width:100px;">Time:</th>
+                <td>16:00 PM</td>
+            </tr>
+            <tr>
+                <th style="width:100px;">Call Time:</th>
+                <td>16:10 PM</td>
+            </tr>
+        </table>
     </div>
-    <div class="col-md-4">
-        <h2>Link where are you?</h2>
-        <p>Comming from position no. 1 to position no.3 is an amazing blow to this franchise. Is GOAT chalenged?</p>
-    </div>
-    <div class="col-md-4">
-        <h2>Future of Roy</h2>
-        <p>Long time has passed since Roy qualified for first four seat. Will he sit at the table again? Stay tuned...</p>
+
+    <div class="col-md-6">
+        <h2>Current driver positions</h2>
+        <table>
+            @foreach (var item in Model.OrderBy(x => x.Position))
+            {
+                if (item.Position == 1)
+                {
+                    <tr>
+                        <th style="width:100px;">@Html.DisplayFor(modelItem => item.Name)</th>
+                        <td><span class="label label-warning">LEADER</span></td>
+                    </tr>
+                }
+                if (item.Position == 2)
+                {
+                    <tr>
+                        <th style="width:100px;">@Html.DisplayFor(modelItem => item.Name)</th>
+                        <td><span class="label label-success">NO. 2</span></td>
+                    </tr>
+                }
+                if (item.Position == 3)
+                {
+                    <tr>
+                        <th style="width:100px;">@Html.DisplayFor(modelItem => item.Name)</th>
+                        <td><span class="label label-success">NO. 3</span></td>
+                    </tr>
+                }
+                if (item.Position == 4)
+                {
+                    <tr>
+                        <th style="width:100px;">@Html.DisplayFor(modelItem => item.Name)</th>
+                        <td><span class="label label-success">NO. 4</span></td>
+                    </tr>
+                }
+                if (item.Position == 5)
+                {
+                    <tr>
+                        <th style="width:100px;">@Html.DisplayFor(modelItem => item.Name)</th>
+                        <td><span class="label label-success">NO. 5</span></td>
+                    </tr>
+                }
+            }
+        </table>
     </div>
 </div>

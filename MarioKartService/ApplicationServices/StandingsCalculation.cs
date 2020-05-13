@@ -19,19 +19,27 @@ namespace MarioKartService.ApplicationServices
             db = new MarioKartContext();
         }
 
-        public Standings CalculateStandingsForAllDrivers(string driver, int totalNumberOfRaces)
+        public List<Standings> CalculateStandingsForAllDrivers(DbSet<Driver> drivers, int totalNumberOfRaces)
         {
-            Standings standings = new Standings();
-            var driverRaces = db.Races.Where(x => x.Driver.Equals(driver));
-            standings.DriverName = driver;
-            standings.Points = DriverPointsCalculation(driverRaces);
-            standings.GrandPrixDriven = driverRaces.Count();
-            standings.GrandPrixTotal = totalNumberOfRaces;
-            standings.WritersCorner = standings.GrandPrixTotal - driverRaces.Count();
+            List<Standings> standingsList = new List<Standings>();
 
-            return standings;
+            foreach (var driver in drivers)
+            {
+                Standings standings = new Standings();
+                var driverRaces = db.Races.Where(x => x.Driver.Equals(driver.Name));
+                standings.DriverName = driver.Name;
+                standings.Points = DriverPointsCalculation(driverRaces);
+                standings.GrandPrixDriven = driverRaces.Count();
+                standings.GrandPrixTotal = totalNumberOfRaces;
+                standings.WritersCorner = standings.GrandPrixTotal - driverRaces.Count();
+                standingsList.Add(standings);
+            }
+
+            var sortedStandingsList = StandingsList(standingsList);
+
+            return sortedStandingsList;
         }
-        public List<Standings> StandingsList(List<Standings> standingsList)
+        private List<Standings> StandingsList(List<Standings> standingsList)
         {
             var sortedStandingsList = standingsList.OrderByDescending(x => x.Points).ToList();
             for (int i = 0; i < sortedStandingsList.Count(); i++)

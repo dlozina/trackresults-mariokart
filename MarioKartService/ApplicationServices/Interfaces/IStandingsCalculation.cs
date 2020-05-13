@@ -12,8 +12,7 @@ namespace MarioKartService.ApplicationServices.Interfaces
 {
     public interface IStandingsCalculation
     {
-        Standings CalculateStandingsForAllDrivers(string driver, int totalNumberOfRaces);
+        List<Standings> CalculateStandingsForAllDrivers(DbSet<Driver> drivers, int totalNumberOfRaces);
         int CalculateTotalNumberOfRaces();
-        List<Standings> StandingsList(List<Standings> standingsList);
     }
 }
