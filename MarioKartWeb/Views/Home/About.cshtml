@@ -2,325 +2,51 @@
     ViewBag.Title = "About";
 }
 
-<style type="text/css">
-    .blueDiv{
-        background-color: navy;
-        color: white;
-        width: 200px;
-    }
-    .redDiv{
-        background-color: red;
-        color: white;
-        width: 200px;
-    }
-    .highlight {
-        background-color:yellow;
-    }
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "Home") <span class="divider"></span></li>
+    <li>@ViewBag.Title</li>
+</ul>
 
-</style>
-
-<h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
-
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</div>
 <hr />
-
-<span class="label label-danger"> Follow the rules! </span>
-
-<div id="MyDiv">This is my div</div>
-
-
-<div id="additionalInfo" title="Additional Information">
-    <p>Use this area to provide additional information.</p>
-</div>
-
-<div class="blueDiv">
-    Blue Div
-</div>
-
-<div class="redDiv">
-    Red Div
-</div>
-<div id="outputDiv">
-</div>
-
-<span class="Foo"> Span 1</span>
-
-<span class="Foo"> Span 2</span>
-
-<span id="Span3" class="Foo"> Span 3</span>
-
-<div id="TableContainerDiv" title="Contains Table">
-    <table id="DataTable">
-        <tr>
-            <td style="width:30%"> First Name</td>
-            <td style="width:70%"> <input id="FirstNameTextBox" onfocus="Focus(this)" onblur="Blur(this)" value="John" type="text"></td>
-        </tr>
-        <tr>
-            <td> Last Name</td>
-            <td> <input id="LastNameTextBox" class="emptyClass" onfocus="Focus(this)" onblur="Blur(this)" type="text"></td>
-        </tr>
-        <tr>
-            <td> Comment</td>
-            <td> <textarea rows="5" class="emptyClass" cols="60" id="CommentsTextBox"> Text area </textarea></td>
-        </tr>
-
-    </table>
-
-
-
-    <input id="SubmitButton" type="button" value="Submit" /> 
-    <br>
-    <div id="DivOutput">
-
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Who are we?</h3>
+        <p>We are group of people in love with Mario Kart racing game.</p>
+        <p>Every Saturday (well more than a year now) we all meet and race.</p>
+        <p>Sport advanced quickly in our comunity and now we have profesional points system and statistics.</p>
+        <p>With amazing skill improvement stress levels become so high because one mistake can get you out of driver's seat.</p>
+        <p>To be NO.1 and keep paying the game throughout whole Saturday is ultimate goal (There are only 4 driver seats)!</p>
     </div>
-    <div>
-        <select id="StatesSelect" class="emptyClass">
-            <option value="AZ">AZ</option>
-            <option value="CA" selected="true">CA</option>
-        </select>
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-12">
+        <span class="label label-primary"> Competition format </span>
     </div>
-
-</div>
-<button id="AddRow">Add Row</button>
-<table id="Customers">
-    <tr>
-        <td>Dino</td>
-        <td>Lozina</td>
-    </tr>
-    <tr>
-        <td>Andro</td>
-        <td>Lozina</td>
-    </tr>
-    <tr>
-        <td>Marina</td>
-        <td>Lozina</td>
-    </tr>
-    <tr>
-        <td>Boris</td>
-        <td>Lozina</td>
-    </tr>
-</table>
-
-<button id="ajax">My Ajax</button>
-<div id="ajaxOutput">
-
+    <div class="col-sm-12" style="margin-top: 10px">
+        <p>1. Grand Prix format is 150 Gp</p>
+        <p>2. Tournamenet consists of 5 Grand Prix </p>
+        <p>3. Tournamenet winer is driver who has the most points from forementioned 5 Grand Prix </p>
+        <p>4. Season consists of 22 tournaments</p>
+        <p>5. Season winer is driver who has the most points from forementioned 22 tournaments</p>
+        <p>6. There are 4 driver seats,qualifications decide who will have a seat</p>
+        <p>7. Driver with slowest time on qualifications is not driving first Grand Prix of tournament</p>
+    </div>
+    <div class="col-sm-12">
+        <span class="label label-danger"> Follow the rules! </span>
+    </div>
+    <div class="col-sm-12" style="margin-top: 10px">
+        <p>1. All drivers use one Joycon for driving</p>
+        <p>2. Turining assistance needs to be turned OFF</p>
+        <p>3. Acceleration assistance needs to be turned OFF</p>
+        <p>4. No driving is alowed outside of tournaments and qualifications</p>
+        <p>5. Training is not alowed</p>
+    </div>
 </div>
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/plugins/dataTables")
-    @Scripts.Render("~/plugins/moment")
-    @Scripts.Render("~/plugins/dataTablesDateTimeSort")
-
-    
-    <script>
-        // Pisanje HTML coda u java scriptu
-        //
-        // Primjer escape-a kad zelimo promjeniti ID
-        // " id='number_input_" + documentTypeProperties[i].DocumentTypePropertyId + "'
-
-        //$html = `<table>
-        //                    <tbody>
-        //                       ${}
-        //                    </tbody>
-        //                </table>`;
-
-        // JQuery test page
-        $(document).ready(function () {
-            // Using selector and alert
-            //var id = $('#additionalInfo');
-            //    alert(id.html());
-            //alert($('div:contains("to provide additional")').html());
-
-            // Using each - write to division - Iterate over index
-            //var html = "";
-            //$('div.blueDiv, div.redDiv').each(function (index){
-            //    html += "<br />" + index + " " + $(this).text();
-            //});
-            //var output = $('#outputDiv');
-            //output.html(html);
-
-            // Modify properties and attributes
-            $('div.blueDiv,div.redDiv').each(function (index) {
-                // Raw DOM object
-                //this.title = "Some title";
-                // JQuery object
-                $(this).attr('title', "Some title 2")
-            });
-
-            // Change css
-            $('div.blueDiv,div.redDiv').css('font-size', '20px');
-
-            // Change css - attr
-            $('div.blueDiv,div.redDiv').attr(
-                {
-                    title: 'Some Title 3',
-                    style: 'font-size:14pt;background-color:yellow;color:Black;'
-                }
-
-            );
-
-            // Change css - chaining
-            //$('div.blueDiv,div.redDiv')
-            //    .attr(
-            //        {
-            //            title: 'Some Title 3',
-            //            style: 'font-size:14pt;background-color:yellow;color:Black;'
-            //        })
-            //    .css('background-color', 'red')
-            //    .css('color', 'green')
-            //    .css('font-size', '20pt');
-
-            $('div.blueDiv,div.redDiv')
-                .attr(
-                    {
-                        title: 'Some Title 3',
-                        style: 'font-size:14pt;background-color:yellow;color:Black;'
-                    })
-                .css({
-                    'background-color':'purple',
-                    'color': 'white',
-                    'font-size': '20pt',
-                }).text('Changed collor')
-
-            //modify the DOM
-            var htmlAppend = '<span style="background-color:green">Appended Child 1</span>';
-            var htmlPrepend = '<span style="background-color:green">Prepended Child 1</span>';
-
-            var tcd = $('#TableContainerDiv')
-            tcd.append(htmlAppend);
-            tcd.prepend(htmlPrepend);
-
-            // Wrap
-            var wrapDiv = '<div class="redDiv ParentWrapper" />'
-            $('span.Foo').wrap(wrapDiv);
-
-            // Spans all all wraped in different div-s
-            //$('div.ParentWrapper').each(function () {
-            //    alert($(this).html());
-
-            //});
-
-            // Remove
-            $('div.ParentWrapper').remove();
-
-            // class functions
-            //$('input[type="text"]').addClass('highlight');
-            //$('#LastNameTextBox').removeClass('highlight');
-
-            // Good Practice
-            WireEvents();
-
-        });
-
-        function WireEvents() {
-            // Click
-            $('#SubmitButton').click(function () {
-                var firstNameVal = $('#FirstNameTextBox').val();
-                var lastNameVal = $('#LastNameTextBox').val();
-                $('#DivOutput').text(firstNameVal + ' ' + lastNameVal);
-                //alert(firstNameVal + ' ' + lastNameVal);
-            });
-            // Select
-            //$('#StatesSelect').change(function () {
-            //    alert($(this).val());
-
-            //});
-             //We can select anything, even text area
-            //$('.emptyClass').change(function () {
-            //    alert($(this).val());
-            //    $(this).addClass('highlight');
-            //});
-
-            //$('#MyDiv').mouseenter(function () {
-            //    changeBg(this);
-            //    $(this).css('cursor', 'pointer');
-            //}).mouseleave(function () {
-            //    changeBg(this);
-            //}).mouseup(function (e) {
-            //    alert($(e.target).attr('id'));
-            //    $(this).text("X: " + e.pageX + " Y: " + e.pageY);
-            //});
-
-            $('#MyDiv').on('mouseenter mouseleave mouseup', function (e) {
-                $(this).toggleClass('highlight');
-                $(this).css('cursor', 'pointer');
-                if (e.type == 'mouseup') {
-                    $(this).text("X: " + e.pageX + " Y: " + e.pageY);
-                }
-            });
-
-            // Attach events to table parent
-            //$('#Customers tbody').on('click', 'td', function () {
-            //    alert($(this).text());
-            //})
-            var newLine = ` <tr>
-                            <td>Mate</td>
-                            <td>Mišo</td>
-                        </tr>
-                        `;
-
-            var newLine2 = '<tr><td>Mate</td><td>Mišo</td></tr>'
-            // Append new row to table
-            var tbody = $('#Customers tbody')
-            $('#AddRow').on('click', function () {
-                alert();
-                tbody.append(newLine);
-            });
-
-            tbody.on('click', 'td', function () {
-                alert($(this).text());
-            });
-
-            // Using Hover
-            $('#DataTable tr').hover(
-                function () {
-                    $(this).css('background-color', '#efefef');
-                },
-                function () {
-                    $(this).css('background-color', '#FFF');
-                });
-
-            //$('#DataTable tr').hover(function () {
-            //    $(this).toggleClass('blueDiv');
-            //});
-
-            $('#ajax').on('click', function () {
-                var person = 'pers=' +
-                    JSON.stringify({
-                        FirstName: $('#FirstNameTextBox').val(),
-                        LastName: $('#LastNameTextBox').val(),
-                    });
-
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("Ajax","Home")',
-                    data: person,
-                    success: function (data) {
-                        alert("Success");
-                        $('#ajaxOutput').text(data);
-                    },
-                    error: function () { alert("Error"); }
-                });
-
-                
-            });
-
-
-        }
-
-        function Focus(tb){
-                $(tb).toggleClass('highlight');
-        }
-
-        function Blur(tb){
-                $(tb).toggleClass('highlight');
-        }
-
-        function changeBg (div) {
-                $(div).toggleClass('highlight');
-            };
-
-    </script>
-}

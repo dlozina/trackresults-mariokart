@@ -3,6 +3,8 @@
     ViewBag.Title = "Drivers Info";
 }
 
+
+
 <ul class="breadcrumb">
     <li>@Html.ActionLink("Home", "Index", "Home") <span class="divider"></span></li>
     <li>Drivers Info</li>
@@ -28,71 +30,57 @@
 </div>*@
 
 <div class="row" style="margin-top: 25px;">
-    <div class="col-lg-4">
+    <div class="col-lg-12">
+        <div class="col-lg-1">
 
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-2 thumb text-center">
+                @*<a class="thumbnail" href="#">
+                    <img class="img-responsive" src="~/Content/Photos/Players/bLink.jpg" alt="Driver Photo">
+                </a>*@
+
+                @if (item.ID == 1)
+                {
+                    <p><span class="label label-success">Second</span></p>
+                    <p><img class="img-responsive" src="~/Content/Photos/Players/bLink.jpg" alt="Driver Photo"></p>
+                    <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                    <p>@Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })</p>
+                }
+                @if (item.ID == 2)
+                {
+                    <p><span class="label label-warning">Leader</span></p>
+                    <p><img class="img-responsive" src="~/Content/Photos/Players/bDonkey.jpg" alt="Driver Photo"></p>
+                    <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                    <p>@Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })</p>
+                }
+                @if (item.ID == 3)
+                {
+                    <p><span class="label label-success">Third</span></p>
+                    <p><img class="img-responsive" src="~/Content/Photos/Players/bTanooki.jpg" alt="Driver Photo"></p>
+                    <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                    <p>@Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })</p>
+                }
+                @if (item.ID == 4)
+                {
+                    <p><span class="label label-success">Fifth</span></p>
+                    <p><img class="img-responsive" src="~/Content/Photos/Players/bRoy.jpg" alt="Driver Photo"></p>
+                    <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                    <p>@Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })</p>
+                }
+                @if (item.ID == 5)
+                {
+                    <p><span class="label label-success">Fourth</span></p>
+                    <p><img class="img-responsive" src="~/Content/Photos/Players/bToad.jpg" alt="Driver Photo"></p>
+                    <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                    <p>@Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })</p>
+                }
+
+            </div>
+        }
+        <div class="col-lg-1">
+
+        </div>
     </div>
-    <div class="col-lg-4">
-        <table class="table">
-            @*<thead>
-                    <tr>
-                        <th class="text-center" style="width: 200px">
-                            Photo
-                        </th>
-
-                        <th class="text-center" style="width: 200px">
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
-
-                        <th class="text-center" style="width: 200px">
-                            Driver Details
-                        </th>
-
-                    </tr>
-                </thead>*@
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td class="text-center">
-                        @if (item.ID == 1)
-                        {
-                            <img src="~/Content/Photos/Players/bLink.jpg" alt="Driver Photo">
-                        }
-                        @if (item.ID == 2)
-                        {
-                            <img src="~/Content/Photos/Players/bDonkey.jpg" alt="Driver Photo">
-                        }
-                        @if (item.ID == 3)
-                        {
-                            <img src="~/Content/Photos/Players/bTanooki.jpg" alt="Driver Photo">
-                        }
-                        @if (item.ID == 4)
-                        {
-                            <img src="~/Content/Photos/Players/bRoy.jpg" alt="Driver Photo">
-                        }
-                        @if (item.ID == 5)
-                        {
-                            <img src="~/Content/Photos/Players/bToad.jpg" alt="Driver Photo">
-                        }
-
-
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-
-                    <td class="text-center">
-                        @Html.ActionLink("Details", "DriverDetails", new { id = item.ID }, new { @class = "btn btn-primary" })
-
-                        @*<a href='@Html.Action("DriverDetails", new { id = item.ID })'>
-                                <img src="~/Content/Photos/Players/Donkey.jpg" />
-                                <img src="@Url.Content("~/Content/Photos/Players/Donkey.jpg")" />
-                            </a>*@
-                    </td>
-                </tr>
-            }
-
-        </table>
-    </div>
-    <div class="col-lg-4">
-
-    </div>
-</div>
+ </div>

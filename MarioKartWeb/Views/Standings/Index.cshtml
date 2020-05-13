@@ -55,9 +55,7 @@
                         <td style="text-align:center; width:150px;">
                             @Html.DisplayFor(model => item.GrandPrixDriven)
                         </td>
-                        <td style="        text-align: center;
-        width: 150px;
-">
+                        <td style="text-align: center;width: 150px;">
                             @Html.DisplayFor(model => item.GrandPrixTotal)
                         </td>
                         <td style="text-align:center; width:150px;">
@@ -80,7 +78,9 @@
                 $(document).ready(function () {
                     $('#DataTables_Table_0').DataTable({
                         searching: false,
-                        paging: false
+                        paging: false,
+                        searching: false,
+                        info: false
                     });
                 });
 
