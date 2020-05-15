@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MarioKartWeb.Models;
+using System.Configuration;
 
 namespace MarioKartWeb.Controllers
 {
@@ -57,6 +58,9 @@ namespace MarioKartWeb.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            // Create Admin account using setting in Web.Config (if needed)
+            CreateAdminIfNeeded();
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -478,6 +482,23 @@ namespace MarioKartWeb.Controllers
                     properties.Dictionary[XsrfKey] = UserId;
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
+            }
+        }
+
+        private void CreateAdminIfNeeded()
+        {
+            // Get Admin Account
+            string AdminUserName = ConfigurationManager.AppSettings["AdminUserName"];
+            string AdminPassword = ConfigurationManager.AppSettings["AdminPassword"];
+            // See if Admin exists
+            var objAdminUser = UserManager.FindByEmail(AdminUserName);
+            if (objAdminUser == null)
+            {
+                // Create Admin user
+                var objNewAdminUser = new ApplicationUser { UserName = AdminUserName, Email = AdminUserName };
+                UserManager.Create(objNewAdminUser, AdminPassword);
+                // Put user in Admin role
+                //UserManager.AddToRole(objNewAdminUser.Id, "Administrator");
             }
         }
         #endregion
