@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MarioKartWeb.ViewModel.TournamentWinnersViewModel>
+
+@{
+    ViewBag.Title = "Tournament Winners";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "Home") <span class="divider"></span></li>
+    <li>Tournament Standings</li>
+</ul>
+
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <h2>Tournament Winners</h2>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 25px;">
+    <div class="col-lg-12">
+        <table class="table table-striped" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">
+                        @Html.DisplayNameFor(model => model.RaceDate)
+                    </th>
+                    <th style="text-align:center;">
+                        @Html.DisplayNameFor(model => model.TournamentName)
+                    </th>
+                    <th style="text-align:center;">
+                        @Html.DisplayNameFor(model => model.Winer)
+                    </th>
+                    <th style="text-align:center;">
+                        @Html.DisplayNameFor(model => model.Points)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width:100px;">
+                            @Html.DisplayFor(model => item.RaceDate)
+                        </td>
+                        <td style="text-align:center;">
+                            @Html.DisplayFor(model => item.TournamentName)
+                        </td>
+                        <td style="text-align:center; width:150px;">
+                            @Html.DisplayFor(model => item.Winer)
+                        </td>
+                        <td style="text-align:center; width:150px;">
+                            @Html.DisplayFor(model => item.Points)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/moment")
+    @Scripts.Render("~/plugins/dataTablesDateTimeSort")
+
+    <script>
+        $(document).ready(function () {
+            $.fn.dataTable.moment('DD/MMMM/YYYY');
+            $('#DataTables_Table_0').DataTable();
+        });
+
+
+    </script>
+}

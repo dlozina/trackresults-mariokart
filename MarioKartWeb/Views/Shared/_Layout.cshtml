@@ -22,7 +22,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Standings", "Index", "Standings")</li>
-                    <li>@Html.ActionLink("Tournament Standings", "Index", "TournamentStandings")</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Tournament Results
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>@Html.ActionLink("Tournament Standings", "Index", "TournamentStandings")</li>
+                            <li>@Html.ActionLink("Tournament Winners", "TournamentWinners", "TournamentStandings")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Drivers Info", "Index", "DriverInfo")</li>
                     @if (Request.IsAuthenticated)
                     {

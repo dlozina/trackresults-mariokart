@@ -58,5 +58,24 @@ namespace MarioKartWeb.Controllers
 
             return View(vm);
         }
+
+        // GET: Tournament Standings
+        public ActionResult TournamentWinners()
+        {
+            List<TournamentWinnersViewModel> vms = new List<TournamentWinnersViewModel>();
+            var tournaments = tournamentsService.GetTournaments().OrderBy(x => x.ID);
+
+            foreach (var tournament in tournaments)
+            {
+                TournamentWinnersViewModel vm = new TournamentWinnersViewModel();
+                vm.ID = tournament.ID;
+                vm.RaceDate = DateTime.Parse(tournament.RaceDate.ToString());
+                vm.TournamentName = tournament.TournamentName;
+                vm.Winer = tournament.Winer;
+                vm.Points = tournament.Points;
+                vms.Add(vm);
+            }
+            return View(vms);
+        }
     }
 }

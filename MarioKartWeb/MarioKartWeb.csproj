@@ -209,6 +209,7 @@
     <Compile Include="ViewModel\TournamentStandingsViewModel.cs" />
     <Compile Include="ViewModel\TournamentStandingsIndexViewModel.cs" />
     <Compile Include="ViewModel\TournamentViewModel.cs" />
+    <Compile Include="ViewModel\TournamentWinnersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -355,6 +356,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Home\TestJs.cshtml" />
+    <Content Include="Views\TournamentStandings\TournamentWinners.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
