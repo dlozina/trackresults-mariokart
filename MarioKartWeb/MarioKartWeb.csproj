@@ -181,6 +181,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\DriverInfoController.cs" />
     <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\GrandPrixesController.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\AnnouncementViewModel.cs" />
     <Compile Include="ViewModel\DriverInfoIndexViewModel.cs" />
     <Compile Include="ViewModel\DriverInfoViewModel.cs" />
     <Compile Include="ViewModel\DriverViewModel.cs" />
@@ -358,6 +360,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Home\TestJs.cshtml" />
     <Content Include="Views\TournamentStandings\TournamentWinners.cshtml" />
+    <Content Include="Views\Announcements\Create.cshtml" />
+    <Content Include="Views\Announcements\Delete.cshtml" />
+    <Content Include="Views\Announcements\Details.cshtml" />
+    <Content Include="Views\Announcements\Edit.cshtml" />
+    <Content Include="Views\Announcements\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -21,6 +21,8 @@ namespace MarioKartWeb.App_Start
                 cfg.CreateMap<GrandPrixViewModel, GrandPrix>().ReverseMap();
                 cfg.CreateMap<Driver, DriverViewModel>().ReverseMap();
                 cfg.CreateMap<DriverViewModel, Driver>().ReverseMap();
+                cfg.CreateMap<Announcement, AnnouncementViewModel>().ReverseMap();
+                cfg.CreateMap<AnnouncementViewModel, Announcement>().ReverseMap();
             });
         }
     }

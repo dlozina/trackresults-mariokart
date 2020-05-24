@@ -1,4 +1,5 @@
-﻿using MarioKartService.ApplicationServices.Interfaces;
+﻿using MarioKart.Model.HelperClass;
+using MarioKartService.ApplicationServices.Interfaces;
 using MarioKartWeb.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,30 +13,37 @@ namespace MarioKartWeb.Controllers
     {
         private readonly IDrivers driversService;
         private readonly IStandingsCalculation standingsService;
+        private readonly IAppInformations appInformationsService;
 
-        public HomeController(IDrivers driversService, IStandingsCalculation standingsService)
+        public HomeController(IDrivers driversService, IStandingsCalculation standingsService, IAppInformations appInformationsService)
         {
             this.driversService = driversService;
             this.standingsService = standingsService;
+            this.appInformationsService = appInformationsService;
         }
 
         public ActionResult Index()
         {
             var drivers = driversService.GetDrivers();
             var totalNumberOfRaces = standingsService.CalculateTotalNumberOfRaces();
-            List<HomeViewModel> vms = new List<HomeViewModel>();
+            var standings = standingsService.CalculateStandingsForAllDrivers(drivers, totalNumberOfRaces);
+            var latestAnnouncement = appInformationsService.GetLatestAnnouncement();
 
-            foreach (var driver in drivers)
-            {
-                HomeViewModel vm = new HomeViewModel();
-                var standings = standingsService.CalculateStandingsForAllDrivers(drivers, totalNumberOfRaces);
-                vm.ID = driver.ID;
-                vm.Position = standings.Where(x => x.DriverName.Equals(driver.Name)).Select(y => y.Position).FirstOrDefault();
-                vm.Name = driver.Name;
-                vms.Add(vm);
-            }
+            HomeViewModel vm = new HomeViewModel();
 
-            return View(vms);
+            vm.FirstPosition = standings.FirstOrDefault(x => x.Position == 1).DriverName;
+            vm.SecondPosition = standings.FirstOrDefault(x => x.Position == 2).DriverName;
+            vm.ThirdPosition = standings.FirstOrDefault(x => x.Position == 3).DriverName;
+            vm.FourthPosition = standings.FirstOrDefault(x => x.Position == 4).DriverName;
+            vm.FifthPosition = standings.FirstOrDefault(x => x.Position == 5).DriverName;
+
+            vm.Title = latestAnnouncement.Title;
+            vm.TournamentName = latestAnnouncement.TournamentName;
+            vm.TournamentDate = DateTime.Parse(latestAnnouncement.TournamentDate.ToString());
+            vm.TournamentTime = DateTime.Parse(latestAnnouncement.TournamentTime.ToString());
+            vm.TournamentCallTime = DateTime.Parse(latestAnnouncement.TournamentCallTime.ToString());
+
+            return View(vm);
         }
 
         public ActionResult About()

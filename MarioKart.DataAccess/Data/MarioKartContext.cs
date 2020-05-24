@@ -20,9 +20,10 @@ namespace MarioKart.DataAccess.Data
         {
             //Database.SetInitializer(new GrandPrixesDBInitializer());
         }
-        public DbSet<MarioKart.Model.Driver> Drivers { get; set; }
-        public DbSet<MarioKart.Model.GrandPrix> GrandPrixes { get; set; }
-        public DbSet<MarioKart.Model.Race> Races { get; set; }
-        public DbSet<MarioKart.Model.Tournament> Tournaments { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<GrandPrix> GrandPrixes { get; set; }
+        public DbSet<Race> Races { get; set; }
+        public DbSet<Tournament> Tournaments { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
     }
 }

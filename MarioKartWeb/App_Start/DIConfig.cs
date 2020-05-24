@@ -19,6 +19,7 @@ namespace MarioKartWeb.App_Start
             builder.RegisterType<Tournaments>().As<ITournaments>().InstancePerRequest();
             builder.RegisterType<Drivers>().As<IDrivers>().InstancePerRequest();
             builder.RegisterType<Races>().As<IRaces>().InstancePerRequest();
+            builder.RegisterType<AppInformations>().As<IAppInformations>().InstancePerRequest();
 
             builder.RegisterFilterProvider();
             IContainer container = builder.Build();

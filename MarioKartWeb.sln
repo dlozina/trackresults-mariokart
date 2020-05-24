@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKartWeb", "MarioKartWeb\MarioKartWeb.csproj", "{29F6A0DB-F38B-4FA3-9EC9-E7291A3FC4F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKartWeb.Tests", "MarioKartWeb.Tests\MarioKartWeb.Tests.csproj", "{456A1A4B-3AE5-4B68-8997-0B9AA8775277}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKartService", "MarioKartService\MarioKartService.csproj", "{372E5CF7-08F3-4EB0-81F6-3D54CAF0D7A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKart.DataTransferObjects", "MarioKartWeb.DataTransferObjects\MarioKart.DataTransferObjects.csproj", "{6307E39E-1A51-40E3-A372-15D05287B59E}"
@@ -25,10 +23,6 @@ Global
 		{29F6A0DB-F38B-4FA3-9EC9-E7291A3FC4F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29F6A0DB-F38B-4FA3-9EC9-E7291A3FC4F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29F6A0DB-F38B-4FA3-9EC9-E7291A3FC4F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{456A1A4B-3AE5-4B68-8997-0B9AA8775277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{456A1A4B-3AE5-4B68-8997-0B9AA8775277}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{456A1A4B-3AE5-4B68-8997-0B9AA8775277}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{456A1A4B-3AE5-4B68-8997-0B9AA8775277}.Release|Any CPU.Build.0 = Release|Any CPU
 		{372E5CF7-08F3-4EB0-81F6-3D54CAF0D7A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{372E5CF7-08F3-4EB0-81F6-3D54CAF0D7A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{372E5CF7-08F3-4EB0-81F6-3D54CAF0D7A2}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -66,6 +66,10 @@
     <Compile Include="Migrations\202002231918027_changedDateTimeFieldRace.Designer.cs">
       <DependentUpon>202002231918027_changedDateTimeFieldRace.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005232117067_addAnnouncementTable.cs" />
+    <Compile Include="Migrations\202005232117067_addAnnouncementTable.Designer.cs">
+      <DependentUpon>202005232117067_addAnnouncementTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DatabaseSeedConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002231918027_changedDateTimeFieldRace.resx">
       <DependentUpon>202002231918027_changedDateTimeFieldRace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005232117067_addAnnouncementTable.resx">
+      <DependentUpon>202005232117067_addAnnouncementTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

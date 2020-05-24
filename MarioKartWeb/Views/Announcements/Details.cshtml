@@ -1,0 +1,74 @@
+﻿@model MarioKartWeb.ViewModel.AnnouncementViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Announcement Details</h2>
+
+<div>
+    <h4>Announcement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEntered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEntered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TournamentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TournamentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TournamentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TournamentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TournamentTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TournamentTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TournamentCallTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TournamentCallTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Story)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Story)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>

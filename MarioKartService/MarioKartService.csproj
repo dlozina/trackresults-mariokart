@@ -68,7 +68,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationServices\AppInformations.cs" />
     <Compile Include="ApplicationServices\Drivers.cs" />
+    <Compile Include="ApplicationServices\Interfaces\IAppInformations.cs" />
     <Compile Include="ApplicationServices\Interfaces\IDrivers.cs" />
     <Compile Include="ApplicationServices\Interfaces\IStandingsCalculation.cs" />
     <Compile Include="ApplicationServices\Interfaces\ITournaments.cs" />
