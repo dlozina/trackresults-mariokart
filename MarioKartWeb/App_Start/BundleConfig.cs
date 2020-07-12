@@ -49,6 +49,14 @@ namespace MarioKartWeb
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                       "~/Scripts/jquery-ui-1.12.1.js"));
 
+            // summernote css styles
+            bundles.Add(new StyleBundle("~/Content/summerNoteStyles").Include(
+                      "~/Content/plugins/summernote/summernote.min.css"));
+
+            // summernote js
+            bundles.Add(new ScriptBundle("~/bundles/summerNote").Include(
+                      "~/Scripts/plugins/sumernote/summernote.min.js"));
+
         }
     }
 }

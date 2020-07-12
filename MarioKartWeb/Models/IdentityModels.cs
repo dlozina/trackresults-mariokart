@@ -29,5 +29,7 @@ namespace MarioKartWeb.Models
         {
             return new ApplicationDbContext();
         }
+
+        //public System.Data.Entity.DbSet<MarioKart.Model.News> News { get; set; }
     }
 }

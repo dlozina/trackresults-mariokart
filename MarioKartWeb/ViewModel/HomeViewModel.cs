@@ -47,5 +47,17 @@ namespace MarioKartWeb.ViewModel
         [DataType(DataType.Time)]
         [Display(Name = "Tournament Call Time")]
         public DateTime TournamentCallTime { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MMMM/yyyy}")]
+        [Display(Name = "Tournament Date")]
+        public DateTime NewsDate { get; set; }
+
+        [Display(Name = "News Title")]
+        public string NewsTitle { get; set; }
+
+        [Display(Name = "News Title")]
+        public string NewsStory { get; set; }
+
     }
 }

@@ -25,5 +25,6 @@ namespace MarioKart.DataAccess.Data
         public DbSet<Race> Races { get; set; }
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<News> News { get; set; }
     }
 }

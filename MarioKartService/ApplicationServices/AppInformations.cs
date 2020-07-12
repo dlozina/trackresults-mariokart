@@ -44,6 +44,38 @@ namespace MarioKartService.ApplicationServices
             db.Announcements.Remove(announcement);
             db.SaveChanges();
         }
+        public News GetLatestNews()
+        {
+            var latestNews = db.News.OrderByDescending(x => x.ID).FirstOrDefault();
+            return latestNews;
+        }
 
+        public IQueryable<News> GetLastNoOfNews(int numerOfNews)
+        {
+            var Newss = db.News;
+            var test = Newss.OrderBy(x => x.ID).Skip(Math.Max(0, Newss.Count() - numerOfNews));
+            return Newss.Skip(Math.Max(0, Newss.Count() - numerOfNews));
+        }
+
+        public DbSet<News> GetNews()
+        {
+            var Newss = db.News;
+            return Newss;
+        }
+        public void SaveNewNews(News News)
+        {
+            db.News.Add(News);
+            db.SaveChanges();
+        }
+        public void EditNews(News News)
+        {
+            db.Entry(News).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        public void DeleteNews(News News)
+        {
+            db.News.Remove(News);
+            db.SaveChanges();
+        }
     }
 }

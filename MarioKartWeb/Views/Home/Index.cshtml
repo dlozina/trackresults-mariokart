@@ -63,3 +63,11 @@
         </table>
     </div>
 </div>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <h5>@Html.DisplayFor(model => model.NewsDate)</h5>
+        <h2>@Html.DisplayFor(model => model.NewsTitle)</h2>
+        @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.NewsStory))
+    </div>
+</div>
