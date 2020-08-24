@@ -52,9 +52,11 @@ namespace MarioKartService.ApplicationServices
 
         public IQueryable<News> GetLastNoOfNews(int numerOfNews)
         {
-            var Newss = db.News;
-            var test = Newss.OrderBy(x => x.ID).Skip(Math.Max(0, Newss.Count() - numerOfNews));
-            return Newss.Skip(Math.Max(0, Newss.Count() - numerOfNews));
+            var newss = db.News;
+            //var test = Newss.OrderBy(x => x.ID).Skip(Math.Max(0, Newss.Count() - numerOfNews));
+            //return Newss.Skip(Math.Max(0, Newss.Count() - numerOfNews));
+            var selectedNews = newss.OrderByDescending(x => x.ID).Take(numerOfNews);
+            return selectedNews;
         }
 
         public DbSet<News> GetNews()

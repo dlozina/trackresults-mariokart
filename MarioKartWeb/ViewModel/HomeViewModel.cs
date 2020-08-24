@@ -9,6 +9,10 @@ namespace MarioKartWeb.ViewModel
 {
     public class HomeViewModel
     {
+        public HomeViewModel(IEnumerable<NewsViewModel> lastNews)
+        {
+            this.LastNews = lastNews;
+        }
 
         public int ID { get; set; }
         [Display(Name = "Name")]
@@ -59,5 +63,6 @@ namespace MarioKartWeb.ViewModel
         [Display(Name = "News Title")]
         public string NewsStory { get; set; }
 
+        public IEnumerable<NewsViewModel> LastNews { get; private set; }
     }
 }

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKart.DataAccess", "Mar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKart.Model", "MarioKart.Model\MarioKart.Model.csproj", "{69767C9E-D65C-4F68-86E3-482A9E41A402}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKart.Utility", "MarioKart.Utility\MarioKart.Utility.csproj", "{55BAF2D5-88FC-4FA3-A981-FB0365065340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{69767C9E-D65C-4F68-86E3-482A9E41A402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69767C9E-D65C-4F68-86E3-482A9E41A402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69767C9E-D65C-4F68-86E3-482A9E41A402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55BAF2D5-88FC-4FA3-A981-FB0365065340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BAF2D5-88FC-4FA3-A981-FB0365065340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BAF2D5-88FC-4FA3-A981-FB0365065340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55BAF2D5-88FC-4FA3-A981-FB0365065340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

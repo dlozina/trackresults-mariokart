@@ -1,10 +1,9 @@
-﻿using MarioKart.Model.HelperClass;
+﻿using AutoMapper;
 using MarioKartService.ApplicationServices.Interfaces;
 using MarioKartWeb.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MarioKartWeb.Controllers
@@ -28,11 +27,12 @@ namespace MarioKartWeb.Controllers
             var totalNumberOfRaces = standingsService.CalculateTotalNumberOfRaces();
             var standings = standingsService.CalculateStandingsForAllDrivers(drivers, totalNumberOfRaces);
             var latestAnnouncement = appInformationsService.GetLatestAnnouncement();
-            var getLatestNews = appInformationsService.GetLatestNews();
+            // var getLatestNews = appInformationsService.GetLatestNews();
             // To do Display last 3 news entries
-            //var getLatestNoOfNews = appInformationsService.GetLastNoOfNews(3);
+            var getLatestNoOfNews = appInformationsService.GetLastNoOfNews(3).ToList();
+            var getLastNoOfNewsVm = Mapper.Map<IEnumerable<NewsViewModel>>(getLatestNoOfNews);
 
-            HomeViewModel vm = new HomeViewModel();
+            HomeViewModel vm = new HomeViewModel(getLastNoOfNewsVm);
 
             vm.FirstPosition = standings.FirstOrDefault(x => x.Position == 1).DriverName;
             vm.SecondPosition = standings.FirstOrDefault(x => x.Position == 2).DriverName;
@@ -46,9 +46,9 @@ namespace MarioKartWeb.Controllers
             vm.TournamentTime = DateTime.Parse(latestAnnouncement.TournamentTime.ToString());
             vm.TournamentCallTime = DateTime.Parse(latestAnnouncement.TournamentCallTime.ToString());
 
-            vm.NewsDate = DateTime.Parse(getLatestNews.DateEntered.ToString());
-            vm.NewsTitle = getLatestNews.NewsTitle;
-            vm.NewsStory = getLatestNews.NewsStory;
+            // vm.NewsDate = DateTime.Parse(getLatestNews.DateEntered.ToString());
+            // vm.NewsTitle = getLatestNews.NewsTitle;
+            // vm.NewsStory = getLatestNews.NewsStory;
 
             return View(vm);
         }

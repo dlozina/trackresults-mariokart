@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using log4net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -10,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MarioKartWeb.Models;
 using System.Configuration;
+using System.Reflection;
 
 namespace MarioKartWeb.Controllers
 {
@@ -18,6 +20,7 @@ namespace MarioKartWeb.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public AccountController()
         {
@@ -83,15 +86,21 @@ namespace MarioKartWeb.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        log.Debug($"User {model.Email} login success !");
+                        return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    {
+                        log.Debug("Invalid login attempt.");
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                    }
             }
         }
 
@@ -396,6 +405,7 @@ namespace MarioKartWeb.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            log.Debug($"LogOff success !");
             return RedirectToAction("Index", "Home");
         }
 

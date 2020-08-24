@@ -60,6 +60,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -400,6 +403,10 @@
     <ProjectReference Include="..\MarioKart.Model\MarioKart.Model.csproj">
       <Project>{69767C9E-D65C-4F68-86E3-482A9E41A402}</Project>
       <Name>MarioKart.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MarioKart.Utility\MarioKart.Utility.csproj">
+      <Project>{55baf2d5-88fc-4fa3-a981-fb0365065340}</Project>
+      <Name>MarioKart.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\MarioKartService\MarioKartService.csproj">
       <Project>{372e5cf7-08f3-4eb0-81f6-3d54caf0d7a2}</Project>
