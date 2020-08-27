@@ -19,7 +19,11 @@ namespace MarioKart.API.App_Start
             // Register your Web API controllers.
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
+            builder.RegisterType<StandingsCalculation>().As<IStandingsCalculation>().InstancePerRequest();
+            builder.RegisterType<Tournaments>().As<ITournaments>().InstancePerRequest();
             builder.RegisterType<Drivers>().As<IDrivers>().InstancePerRequest();
+            builder.RegisterType<Races>().As<IRaces>().InstancePerRequest();
+            builder.RegisterType<AppInformations>().As<IAppInformations>().InstancePerRequest();
 
             // OPTIONAL: Register the Autofac model binder provider.
             builder.RegisterWebApiModelBinderProvider();

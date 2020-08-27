@@ -22,10 +22,10 @@ namespace MarioKartService.ApplicationServices
             var drivers = db.Drivers;
             return drivers;
         }
-        public void SaveNewDriver(Driver driver)
+        public int SaveNewDriver(Driver driver)
         {
             db.Drivers.Add(driver);
-            db.SaveChanges();
+            return db.SaveChanges();
         }
         public void EditDriver(Driver driver)
         {

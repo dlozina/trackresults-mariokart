@@ -8,7 +8,7 @@ namespace MarioKartService.ApplicationServices.Interfaces
     public interface IDrivers
     {
         DbSet<Driver> GetDrivers();
-        void SaveNewDriver(Driver driver);
+        int SaveNewDriver(Driver driver);
         void EditDriver(Driver driver);
         void DeleteDriver(Driver driver);
         int NumberOfGrandPrixWon(string driver);

@@ -1,0 +1,81 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Override  the default bootstrap behavior for container*/
+/*.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 25px;
+}*/
+
+.backgound {
+    background-image: url('/Content/Photos/Background/fMarioKart8.jpg');
+    /*background-position: right top;
+    background-repeat: repeat;
+    padding: 15px;*/
+}
+
+.whitebackground {
+    background-color: white;
+}
+
+.divcenter {
+    margin: 0 auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.divborder {
+    border-style: solid;
+    border-color: black;
+}
+
+.imageborder {
+    border-style: solid;
+    border-color: black;
+}
+
+.topmarginallcontent {
+    margin-top: 30px;
+}
+.topmarginrendered {
+    margin-top: 15px;
+}
+
+/* Image border */
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+/*img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}*/
+
