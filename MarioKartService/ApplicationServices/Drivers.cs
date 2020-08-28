@@ -27,15 +27,15 @@ namespace MarioKartService.ApplicationServices
             db.Drivers.Add(driver);
             return db.SaveChanges();
         }
-        public void EditDriver(Driver driver)
+        public int EditDriver(Driver driver)
         {
             db.Entry(driver).State = EntityState.Modified;
-            db.SaveChanges();
+            return db.SaveChanges();
         }
-        public void DeleteDriver(Driver driver)
+        public int DeleteDriver(Driver driver)
         {
             db.Drivers.Remove(driver);
-            db.SaveChanges();
+            return db.SaveChanges();
         }
 
         public int NumberOfGrandPrixWon(string driver)

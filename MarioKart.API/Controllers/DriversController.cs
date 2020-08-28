@@ -45,18 +45,15 @@ namespace MarioKart.API.Controllers
             try
             {
                 if (driver == null)
-                {
                     return BadRequest();
-                }
+                
 
                 // Dodavanje drivera
                 var result = driversService.SaveNewDriver(driver);
 
                 if (result == 1)
-                {
                     return Created(Request.RequestUri + "/" + driver.ID.ToString(), driver);
-                }
-
+                
                 return BadRequest();
             }
             catch (Exception)
@@ -74,21 +71,46 @@ namespace MarioKart.API.Controllers
                 if (driver == null)
                     return BadRequest();
 
-                var result = driversService.GetDrivers().Find(id);
+                // if you find it and then modify it is sored in the context
+                //var result = driversService.GetDrivers().Find(id);
+                
+                 // Update
+                 var result = driversService.EditDriver(driver);
+                 if (result == 1)
+                    return Ok(driver);
 
-                if (result != null)
-                {
-                    // Update
-                    driversService.EditDriver(driver);
-                    return Ok(result);
-                }
-                else if (result == null)
-                {
+                 else if (result != 1)
                     return NotFound();
+                
+
+            return BadRequest();
+
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+
+        }
+
+        [Route("drivers")]
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                var driver = driversService.GetDrivers().Find(id);
+
+                if (driver != null)
+                {
+                    var result = driversService.DeleteDriver(driver);
+                    if (result == 1)
+                        return StatusCode(HttpStatusCode.NoContent);
+                    else
+                        return StatusCode(HttpStatusCode.InternalServerError);
                 }
 
                 return BadRequest();
-
             }
             catch (Exception)
             {
