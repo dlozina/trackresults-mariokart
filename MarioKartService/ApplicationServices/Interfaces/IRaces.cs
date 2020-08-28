@@ -12,9 +12,9 @@ namespace MarioKartService.ApplicationServices.Interfaces
     {
         DbSet<Race> GetRaces();
         DbSet<GrandPrix> GetGrandPrixes();
-        void SaveNewRace(Race race);
-        void EditRace(Race race);
-        void DeleteRace(Race race);
+        int SaveNewRace(Race race);
+        int EditRace(Race race);
+        int DeleteRace(Race race);
         void SaveNewGrandPrix(GrandPrix grandPrix);
         void EditGrandPrix(GrandPrix grandPrix);
         void DeleteGrandPrix(GrandPrix grandPrix);

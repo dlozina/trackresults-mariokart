@@ -29,20 +29,20 @@ namespace MarioKartService.ApplicationServices
             var grandPrix = db.GrandPrixes;
             return grandPrix;
         }
-        public void SaveNewRace(Race race)
+        public int SaveNewRace(Race race)
         {
             db.Races.Add(race);
-            db.SaveChanges();
+            return db.SaveChanges();
         }
-        public void EditRace(Race race)
+        public int EditRace(Race race)
         {
             db.Entry(race).State = EntityState.Modified;
-            db.SaveChanges();
+            return db.SaveChanges();
         }
-        public void DeleteRace(Race race)
+        public int DeleteRace(Race race)
         {
             db.Races.Remove(race);
-            db.SaveChanges();
+            return db.SaveChanges();
         }
 
         public void SaveNewGrandPrix(GrandPrix grandPrix)

@@ -5,32 +5,35 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using MarioKart.API.Helpers;
 
 namespace MarioKart.API.Controllers
 {
     //[Authorize]
     [RoutePrefix("api")]
-    public class DriversController : ApiController
+    public class RacesController : ApiController
     {
+        private readonly ITournaments tournamentsService;
         private readonly IDrivers driversService;
+        private readonly IRaces racesService;
 
-        public DriversController(IDrivers driversService)
+        public RacesController(ITournaments tournamentsService, IDrivers driversService, IRaces racesService)
         {
+            this.tournamentsService = tournamentsService;
             this.driversService = driversService;
+            this.racesService = racesService;
         }
 
-        [Route("drivers")]
+        [Route("races")]
         [HttpGet]
-        public IHttpActionResult Get(string sort = "id")
+        public IHttpActionResult Get()
         {
-            var drivers = driversService.GetDrivers().ApplySort(sort);
+            var races = racesService.GetRaces().OrderByDescending(x => x.RaceDate);
             try
             {
-                if (drivers == null)
+                if (races == null)
                     return NotFound();
                 else
-                    return Ok(drivers);
+                    return Ok(races);
             }
             catch (Exception)
             {
@@ -38,22 +41,22 @@ namespace MarioKart.API.Controllers
             }
         }
 
-        [Route("drivers")]
+        [Route("races")]
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Model.Driver driver)
+        public IHttpActionResult Post([FromBody] Model.Race race)
         {
             try
             {
-                if (driver == null)
+                if (race == null)
                     return BadRequest();
-                
+
 
                 // Dodavanje drivera
-                var result = driversService.SaveNewDriver(driver);
+                var result = racesService.SaveNewRace(race);
 
                 if (result == 1)
-                    return Created(Request.RequestUri + "/" + driver.ID.ToString(), driver);
-                
+                    return Created(Request.RequestUri + "/" + race.ID.ToString(), race);
+
                 return BadRequest();
             }
             catch (Exception)
@@ -62,48 +65,48 @@ namespace MarioKart.API.Controllers
             }
         }
 
-        [Route("drivers")]
+        [Route("races")]
         [HttpPut]
-        public IHttpActionResult Put(int id, [FromBody] Model.Driver driver)
+        public IHttpActionResult Put(int id, [FromBody] Model.Race race)
         {
             try
             {
-                if (driver == null)
+                if (race == null)
                     return BadRequest();
 
                 // if you find it and then modify it is sored in the context and you get modif error
                 //var result = driversService.GetDrivers().Find(id);
-                
-                 // Update
-                 var result = driversService.EditDriver(driver);
-                 if (result == 1)
-                    return Ok(driver);
 
-                 else if (result != 1)
+                // Update
+                var result = racesService.EditRace(race); ;
+                if (result == 1)
+                    return Ok(race);
+
+                else if (result != 1)
                     return NotFound();
-                
 
-            return BadRequest();
+
+                return BadRequest();
 
             }
             catch (Exception)
             {
                 return InternalServerError();
             }
-
         }
 
-        [Route("drivers")]
+        [Route("races")]
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             try
             {
-                var driver = driversService.GetDrivers().Find(id);
 
-                if (driver != null)
+                var race = racesService.GetRaces().Find(id);
+
+                if (race != null)
                 {
-                    var result = driversService.DeleteDriver(driver);
+                    var result = racesService.DeleteRace(race); 
                     if (result == 1)
                         return StatusCode(HttpStatusCode.NoContent);
                     else
