@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKart.Utility", "MarioK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKart.API", "MarioKart.API\MarioKart.API.csproj", "{1688A1D5-7A07-40E1-94C3-6BF381FF842A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioKart.Desktop", "MarioKart.Desktop\MarioKart.Desktop.csproj", "{ED8B733E-B618-4DA5-9787-87C0C9DA364A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.API", "Client.API\Client.API.csproj", "{8D610500-FE9C-43A8-B715-9A5F21F9D9D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{1688A1D5-7A07-40E1-94C3-6BF381FF842A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1688A1D5-7A07-40E1-94C3-6BF381FF842A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1688A1D5-7A07-40E1-94C3-6BF381FF842A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED8B733E-B618-4DA5-9787-87C0C9DA364A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED8B733E-B618-4DA5-9787-87C0C9DA364A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED8B733E-B618-4DA5-9787-87C0C9DA364A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED8B733E-B618-4DA5-9787-87C0C9DA364A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D610500-FE9C-43A8-B715-9A5F21F9D9D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D610500-FE9C-43A8-B715-9A5F21F9D9D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D610500-FE9C-43A8-B715-9A5F21F9D9D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D610500-FE9C-43A8-B715-9A5F21F9D9D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
