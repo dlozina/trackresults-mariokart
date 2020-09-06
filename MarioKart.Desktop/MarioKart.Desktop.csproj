@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -55,6 +58,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\DriversViewModel.cs" />
+    <Compile Include="ViewModels\RacesViewModel.cs" />
+    <Compile Include="ViewModels\StandingsViewModel.cs" />
+    <Compile Include="Views\Drivers.xaml.cs">
+      <DependentUpon>Drivers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Races.xaml.cs">
+      <DependentUpon>Races.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Standings.xaml.cs">
+      <DependentUpon>Standings.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +82,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Drivers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Races.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Standings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,6 +120,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client.API\Client.API.csproj">
+      <Project>{8D610500-FE9C-43A8-B715-9A5F21F9D9D3}</Project>
+      <Name>Client.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MarioKart.Model\MarioKart.Model.csproj">
+      <Project>{69767c9e-d65c-4f68-86e3-482a9e41a402}</Project>
+      <Name>MarioKart.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

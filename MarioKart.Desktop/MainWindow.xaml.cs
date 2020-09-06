@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Client.API.API;
+using Client.API.Data.Standings;
+using MarioKart.Desktop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,21 @@ namespace MarioKart.Desktop
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void StandingsButtonClicked(object sender, RoutedEventArgs e)
+        {
+            DataContext = new StandingsViewModel();
+        }
+
+        private void DriversButtonClicked(object sender, RoutedEventArgs e)
+        {
+            DataContext = new DriversViewModel();
+        }
+
+        private void RacesButtonClicked(object sender, RoutedEventArgs e)
+        {
+            DataContext = new RacesViewModel();
         }
     }
 }

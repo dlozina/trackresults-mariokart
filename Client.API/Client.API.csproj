@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\ApiHelper.cs" />
+    <Compile Include="API\ApiProcessor.cs" />
+    <Compile Include="Data\Standings\Standings.cs" />
+    <Compile Include="Data\Standings\StandingsList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
