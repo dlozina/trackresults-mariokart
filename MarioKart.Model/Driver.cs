@@ -13,5 +13,6 @@ namespace MarioKart.Model
         public string Description { get; set; }
         public string FavoriteTrack { get; set; }
         public string FavoriteCar { get; set; }
+        public string EntryYear { get; set; }
     }
 }

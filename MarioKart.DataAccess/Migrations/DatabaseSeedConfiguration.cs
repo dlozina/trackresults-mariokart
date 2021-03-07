@@ -33,11 +33,11 @@ namespace MarioKart.DataAccess.Migrations
             {
                 context.Drivers.AddOrUpdate(
                 p => p.ID,
-                    new Model.Driver { Name = "Link", Description = "Drift Sensei", FavoriteTrack = "Bone Dry Dunes", FavoriteCar = "W 25 Silver Arrow" },
-                    new Model.Driver { Name = "Donkey", Description = "Agressive \"lick the line\" drift", FavoriteTrack = "Moo Moo Meadows", FavoriteCar = "Landship" },
-                    new Model.Driver { Name = "Tanooki", Description = "Medium \"no risk\" drift", FavoriteTrack = "Chip Chip Beach", FavoriteCar = "W 25 Silver Arrow" },
-                    new Model.Driver { Name = "Roy", Description = "More old school turn than drift", FavoriteTrack = "Moo Moo Meadows", FavoriteCar = "W 25 Silver Arrow" },
-                    new Model.Driver { Name = "Toad", Description = "Crazy \"some times you win\" drift", FavoriteTrack = "Cheep Cheep Beach", FavoriteCar = "300 SL Roadster" }
+                    new Model.Driver { Name = "Link", Description = "Drift Sensei", FavoriteTrack = "Bone Dry Dunes", FavoriteCar = "W 25 Silver Arrow", EntryYear = "2020" },
+                    new Model.Driver { Name = "Donkey", Description = "Agressive \"lick the line\" drift", FavoriteTrack = "Moo Moo Meadows", FavoriteCar = "Landship", EntryYear = "2020" },
+                    new Model.Driver { Name = "Tanooki", Description = "Medium \"no risk\" drift", FavoriteTrack = "Chip Chip Beach", FavoriteCar = "W 25 Silver Arrow", EntryYear = "2020" },
+                    new Model.Driver { Name = "Roy", Description = "More old school turn than drift", FavoriteTrack = "Moo Moo Meadows", FavoriteCar = "W 25 Silver Arrow", EntryYear = "2020" },
+                    new Model.Driver { Name = "Toad", Description = "Crazy \"some times you win\" drift", FavoriteTrack = "Cheep Cheep Beach", FavoriteCar = "300 SL Roadster", EntryYear = "2020" }
                     );
             }
 
@@ -278,13 +278,28 @@ namespace MarioKart.DataAccess.Migrations
                     // Race5
                     new Model.Race { RaceDate = new DateTime(2020, 2, 23), TournamentName = "MK8:Death Race", GrandPrixName = "Special Cup", Driver = "Roy", Position = 2, Points = 40 },
                     new Model.Race { RaceDate = new DateTime(2020, 2, 23), TournamentName = "MK8:Death Race", GrandPrixName = "Special Cup", Driver = "Donkey", Position = 1, Points = 41 },
-                    new Model.Race { RaceDate = new DateTime(2020, 2, 23), TournamentName = "MK8:Death Race", GrandPrixName = "Special Cup", Driver = "Toad", Position = 7, Points = 26 },
+                    new Model.Race { RaceDate = new DateTime(2021, 3, 7), TournamentName = "MK8:Death Race", GrandPrixName = "Special Cup", Driver = "Toad", Position = 7, Points = 26 },
                     new Model.Race { RaceDate = new DateTime(2020, 2, 23), TournamentName = "MK8:Death Race", GrandPrixName = "Special Cup", Driver = "Tanooki", Position = 2, Points = 40 }
+                    );
+            }
+
+            if (!context.News.Any())
+            {
+                context.News.AddOrUpdate(
+                    p => p.ID,
+                    new Model.News { DateEntered = new DateTime(2021, 3, 7), NewsTitle = "How fast can one go?", NewsStory = "Rocket fast with drift!" }
+                    );
+            }
+
+            if (!context.Announcements.Any())
+            {
+                context.Announcements.AddOrUpdate(
+                    p => p.ID,
+                    new Model.Announcement { DateEntered = new DateTime(2021, 3, 7), Title = "Tournament", TournamentName = "MK10: Return of the Toad", TournamentDate = new DateTime(2021, 3, 7), TournamentTime = new DateTime(2021, 3, 7, 5, 0, 0), TournamentCallTime = new DateTime(2021, 3, 7, 5, 15, 0), Story = "Can he do it?" }
                     );
             }
 
             context.SaveChanges();
         }
-
     }
 }

@@ -54,25 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\MarioKartContext.cs" />
-    <Compile Include="Migrations\202002222227474_initialMigration.cs" />
-    <Compile Include="Migrations\202002222227474_initialMigration.Designer.cs">
-      <DependentUpon>202002222227474_initialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002222321126_changedDateTimeFieldTournament.cs" />
-    <Compile Include="Migrations\202002222321126_changedDateTimeFieldTournament.Designer.cs">
-      <DependentUpon>202002222321126_changedDateTimeFieldTournament.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002231918027_changedDateTimeFieldRace.cs" />
-    <Compile Include="Migrations\202002231918027_changedDateTimeFieldRace.Designer.cs">
-      <DependentUpon>202002231918027_changedDateTimeFieldRace.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005232117067_addAnnouncementTable.cs" />
-    <Compile Include="Migrations\202005232117067_addAnnouncementTable.Designer.cs">
-      <DependentUpon>202005232117067_addAnnouncementTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006211847107_newsTable.cs" />
-    <Compile Include="Migrations\202006211847107_newsTable.Designer.cs">
-      <DependentUpon>202006211847107_newsTable.cs</DependentUpon>
+    <Compile Include="Migrations\202103062330578_add_Initial_Migration.cs" />
+    <Compile Include="Migrations\202103062330578_add_Initial_Migration.Designer.cs">
+      <DependentUpon>202103062330578_add_Initial_Migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DatabaseSeedConfiguration.cs" />
@@ -83,27 +67,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002222227474_initialMigration.resx">
-      <DependentUpon>202002222227474_initialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002222321126_changedDateTimeFieldTournament.resx">
-      <DependentUpon>202002222321126_changedDateTimeFieldTournament.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002231918027_changedDateTimeFieldRace.resx">
-      <DependentUpon>202002231918027_changedDateTimeFieldRace.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005232117067_addAnnouncementTable.resx">
-      <DependentUpon>202005232117067_addAnnouncementTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006211847107_newsTable.resx">
-      <DependentUpon>202006211847107_newsTable.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MarioKart.Model\MarioKart.Model.csproj">
       <Project>{69767c9e-d65c-4f68-86e3-482a9e41a402}</Project>
       <Name>MarioKart.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202103062330578_add_Initial_Migration.resx">
+      <DependentUpon>202103062330578_add_Initial_Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

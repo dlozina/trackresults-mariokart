@@ -10,6 +10,12 @@ namespace MarioKart.DataAccess.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            // Solution for migration
+            // http://blog.angelwebdesigns.com.au/moving-entity-framework-migrations-to-another-project/
+            //AutomaticMigrationDataLossAllowed = false;
+            //MigrationsNamespace = "My.Migrations.Assembly";
+            //MigrationsDirectory = "My/Migrations/Directory";
+            //ContextKey = "MyContexKey"; // You MUST set this for every migration context
         }
 
         protected override void Seed(MarioKart.DataAccess.Data.MarioKartContext context)
